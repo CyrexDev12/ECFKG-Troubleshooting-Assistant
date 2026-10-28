@@ -1,0 +1,21 @@
+case_id,category,status,expected_root_cause,expected_abstention,returned_faults,candidate_count,top1,top3,appropriate_abstention,initial_useful_check,reference_count,valid_references,latency_ms
+EVAL_001,follow_up,candidate_identified,F_SUPPLY,False,F_SUPPLY,1,True,True,False,True,3,3,0.9129999671131372
+EVAL_002,follow_up,candidate_identified,F_ROUTE,False,F_ROUTE,1,True,True,False,True,3,3,0.354900024831295
+EVAL_003,follow_up,candidate_identified,F_LEAD,False,F_LEAD,1,True,True,False,True,3,3,0.3291000612080097
+EVAL_004,follow_up,candidate_identified,F_DMM,False,F_DMM,1,True,True,False,True,3,3,0.36519975401461124
+EVAL_005,follow_up,candidate_identified,F_RESOURCE,False,F_RESOURCE,1,True,True,False,True,3,3,0.30300021171569824
+EVAL_006,follow_up,candidate_identified,F_SEQUENCE,False,F_SEQUENCE,1,True,True,False,True,3,3,0.5139000713825226
+EVAL_007,paraphrase,candidate_identified,F_SUPPLY,False,F_SUPPLY,1,True,True,False,True,3,3,0.5375000182539225
+EVAL_008,paraphrase,candidate_identified,F_ROUTE,False,"F_ROUTE, F_DMM, F_LEAD",3,True,True,False,True,7,7,1.7780999187380075
+EVAL_009,paraphrase,candidate_identified,F_LEAD,False,"F_LEAD, F_DMM, F_ROUTE",3,True,True,False,True,7,7,0.5222999025136232
+EVAL_010,paraphrase,candidate_identified,F_DMM,False,"F_DMM, F_LEAD, F_ROUTE",3,True,True,False,True,7,7,0.4893997684121132
+EVAL_011,paraphrase,candidate_identified,F_RESOURCE,False,F_RESOURCE,1,True,True,False,True,3,3,0.21369988098740578
+EVAL_012,paraphrase,candidate_identified,F_SEQUENCE,False,"F_SEQUENCE, F_DMM, F_LEAD",3,True,True,False,True,7,7,0.569900032132864
+EVAL_013,incomplete_ambiguous,needs_observations,F_SUPPLY,False,"F_DMM, F_LEAD, F_ROUTE",3,False,False,False,True,7,7,0.18369988538324833
+EVAL_014,incomplete_ambiguous,needs_observations,F_SEQUENCE,False,"F_DMM, F_LEAD, F_ROUTE",3,False,False,False,True,7,7,0.32549980096518993
+EVAL_015,unknown,abstain,,True,,0,False,False,True,False,0,0,0.04979991354048252
+EVAL_016,out_of_scope,abstain,,True,,0,False,False,True,False,0,0,0.015900004655122757
+EVAL_017,unsupported_voltage,abstain,,True,,0,False,False,True,False,0,0,0.04360009916126728
+EVAL_018,contradictory,abstain,,True,,0,False,False,True,False,0,0,0.3879999276250601
+EVAL_019,unmodeled_multiple_faults,abstain,,True,,0,False,False,True,False,0,0,0.48649986274540424
+EVAL_020,unsupported_claim,abstain,,True,,0,False,False,True,False,0,0,0.07580011151731014

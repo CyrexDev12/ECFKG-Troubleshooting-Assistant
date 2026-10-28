@@ -1,0 +1,130 @@
+{
+  "version": "logical-station-1.0",
+  "presets": [
+    {
+      "id": "NORMAL",
+      "label": "Nominal state",
+      "state": {
+        "supply": "normal",
+        "route": "normal",
+        "lead": "normal",
+        "mode": "normal",
+        "resource": "normal",
+        "sequence": "normal"
+      }
+    },
+    {
+      "id": "SUPPLY",
+      "label": "Supply disabled or zero setpoint",
+      "state": {
+        "supply": "output_disabled",
+        "route": "normal",
+        "lead": "normal",
+        "mode": "normal",
+        "resource": "normal",
+        "sequence": "normal"
+      }
+    },
+    {
+      "id": "ROUTE",
+      "label": "Incorrect switch route",
+      "state": {
+        "supply": "normal",
+        "route": "wrong_route",
+        "lead": "normal",
+        "mode": "normal",
+        "resource": "normal",
+        "sequence": "normal"
+      }
+    },
+    {
+      "id": "LEAD",
+      "label": "Open or misconnected lead",
+      "state": {
+        "supply": "normal",
+        "route": "normal",
+        "lead": "open_path",
+        "mode": "normal",
+        "resource": "normal",
+        "sequence": "normal"
+      }
+    },
+    {
+      "id": "DMM",
+      "label": "Incorrect measurement configuration",
+      "state": {
+        "supply": "normal",
+        "route": "normal",
+        "lead": "normal",
+        "mode": "wrong_mode",
+        "resource": "normal",
+        "sequence": "normal"
+      }
+    },
+    {
+      "id": "RESOURCE",
+      "label": "Instrument communication or resource mismatch",
+      "state": {
+        "supply": "normal",
+        "route": "normal",
+        "lead": "normal",
+        "mode": "normal",
+        "resource": "unreachable",
+        "sequence": "normal"
+      }
+    },
+    {
+      "id": "SEQUENCE",
+      "label": "Sequence/configuration mismatch",
+      "state": {
+        "supply": "normal",
+        "route": "normal",
+        "lead": "normal",
+        "mode": "normal",
+        "resource": "normal",
+        "sequence": "profile_mismatch"
+      }
+    }
+  ],
+  "check_fields": {
+    "CHECK_SUPPLY": "supply",
+    "CHECK_ROUTE": "route",
+    "CHECK_LEAD": "lead",
+    "CHECK_DMM": "mode",
+    "CHECK_RESOURCE": "resource",
+    "CHECK_SEQUENCE": "sequence"
+  },
+  "symptom_rules": [
+    {
+      "field": "resource",
+      "equals": "unreachable",
+      "text": "The DMM timed out; no reading is available."
+    },
+    {
+      "field": "supply",
+      "equals": "output_disabled",
+      "text": "The voltage verification step is failing. The DMM reading is near zero."
+    },
+    {
+      "field": "route",
+      "equals": "wrong_route",
+      "text": "The voltage verification step is failing. The DMM reading is near zero."
+    },
+    {
+      "field": "lead",
+      "equals": "open_path",
+      "text": "The voltage verification step is failing. The DMM reading is near zero."
+    },
+    {
+      "field": "mode",
+      "equals": "wrong_mode",
+      "text": "The voltage verification step is failing. The DMM reading is near zero."
+    },
+    {
+      "field": "sequence",
+      "equals": "profile_mismatch",
+      "text": "The voltage verification step is failing. The DMM reading is near zero."
+    }
+  ],
+  "nominal_symptom": "The DMM reads the expected 5 V DC."
+}

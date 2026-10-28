@@ -1,0 +1,41 @@
+[
+  {
+    "id": "SRC_MODEL",
+    "title": "Original generic voltage workflow",
+    "publisher": "Prototype authors",
+    "reference": "docs/synthetic-model.md",
+    "section": "Modeled mechanisms",
+    "paraphrase": "Conditional single-fault logical mechanisms; not equipment evidence.",
+    "access_date": "2026-10-27",
+    "basis": "synthetic_demo",
+    "review_status": "synthetic_unreviewed",
+    "permitted_use": "Original synthetic data requested by user; engineering review pending.",
+    "approval_record": null
+  },
+  {
+    "id": "SRC_CHECKS",
+    "title": "Original diagnostic check definitions",
+    "publisher": "Prototype authors",
+    "reference": "docs/synthetic-model.md",
+    "section": "Checks and observations",
+    "paraphrase": "Categorical state checks distinguish modeled conditions; no hardware procedures.",
+    "access_date": "2026-10-27",
+    "basis": "synthetic_demo",
+    "review_status": "synthetic_unreviewed",
+    "permitted_use": "Original synthetic data requested by user; engineering review pending.",
+    "approval_record": null
+  },
+  {
+    "id": "SRC_REFERENCE",
+    "title": "Synthetic development reference case",
+    "publisher": "Prototype authors",
+    "reference": "docs/synthetic-model.md",
+    "section": "Evidence status",
+    "paraphrase": "A development example records an output-disabled case; not independent validation.",
+    "access_date": "2026-10-27",
+    "basis": "synthetic_demo",
+    "review_status": "synthetic_unreviewed",
+    "permitted_use": "Original synthetic data requested by user; engineering review pending.",
+    "approval_record": null
+  }
+]

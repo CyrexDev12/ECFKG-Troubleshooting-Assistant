@@ -1,0 +1,15 @@
+[
+  {
+    "id": "REVIEW_NI_PXI",
+    "title": "An Overview of the PXI Platform",
+    "publisher": "NI",
+    "url": "https://www.ni.com/en/shop/pxi/overview-pxi.html",
+    "section": "Introduction, Figure 2; Chassis; Controller; Peripheral Modules",
+    "paraphrase": "PXI systems combine chassis, controller and modular instrumentation.",
+    "access_date": "2026-10-27",
+    "review_status": "pending",
+    "permitted_use": "Undetermined; team must review license, scope and sharing before promotion.",
+    "runtime_use": false,
+    "causal_support": "None established for this prototype's six faults."
+  }
+]

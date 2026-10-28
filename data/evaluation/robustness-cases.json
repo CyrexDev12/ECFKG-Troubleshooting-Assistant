@@ -1,0 +1,20 @@
+[
+  {
+    "case_id": "ROBUST_001",
+    "category": "malformed_model_output",
+    "input": "Non-JSON assistant reply",
+    "expected": "model_error; no fallback",
+    "evidence_basis": "synthetic software contract",
+    "source_ids": [],
+    "verification": "tests/test_agent.py::test_model_errors_do_not_fallback"
+  },
+  {
+    "case_id": "ROBUST_002",
+    "category": "unsupported_model_claim",
+    "input": "Invented citation or confidence field",
+    "expected": "model_error; no fallback",
+    "evidence_basis": "synthetic software contract",
+    "source_ids": [],
+    "verification": "tests/test_agent.py::test_model_errors_do_not_fallback"
+  }
+]

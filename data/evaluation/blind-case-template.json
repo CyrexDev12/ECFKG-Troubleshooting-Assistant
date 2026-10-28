@@ -1,0 +1,17 @@
+{
+  "instructions": "A teammate authors new cases without inspecting answers or changing the runtime model. Replace placeholders, save a JSON list separately, and run --cases. Do not promote evaluation answers to the graph.",
+  "case": {
+    "case_id": "BLIND_001",
+    "category": "teammate_blind",
+    "initial_symptom": "REPLACE with an approved generic symptom",
+    "available_observations": [],
+    "expected_root_cause": null,
+    "expected_abstention": true,
+    "evidence_basis": "synthetic_demo",
+    "source_ids": [
+      "SRC_MODEL",
+      "SRC_CHECKS"
+    ],
+    "expected_useful_checks": []
+  }
+}

@@ -1,0 +1,1584 @@
+{
+  "version": "generic-voltage-1.0",
+  "nodes": [
+    {
+      "id": "C_HOST",
+      "type": "software",
+      "layer": "physical",
+      "knowledge": "theory",
+      "label": "Host and sequence software",
+      "description": "Generic synthetic workflow element; no product internals.",
+      "aliases": [
+        "sequence",
+        "host",
+        "test software"
+      ],
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "C_CHASSIS",
+      "type": "component",
+      "layer": "physical",
+      "knowledge": "theory",
+      "label": "PXI chassis",
+      "description": "Generic synthetic workflow element; no product internals.",
+      "aliases": [
+        "chassis"
+      ],
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "C_CONTROLLER",
+      "type": "component",
+      "layer": "physical",
+      "knowledge": "theory",
+      "label": "PXI controller",
+      "description": "Generic synthetic workflow element; no product internals.",
+      "aliases": [
+        "controller"
+      ],
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "C_SUPPLY",
+      "type": "component",
+      "layer": "physical",
+      "knowledge": "theory",
+      "label": "Programmable supply",
+      "description": "Generic synthetic workflow element; no product internals.",
+      "aliases": [
+        "supply",
+        "power"
+      ],
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "C_SWITCH",
+      "type": "component",
+      "layer": "physical",
+      "knowledge": "theory",
+      "label": "Switch matrix",
+      "description": "Generic synthetic workflow element; no product internals.",
+      "aliases": [
+        "switch",
+        "route"
+      ],
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "C_DMM",
+      "type": "component",
+      "layer": "physical",
+      "knowledge": "theory",
+      "label": "Digital multimeter",
+      "description": "Generic synthetic workflow element; no product internals.",
+      "aliases": [
+        "dmm",
+        "meter",
+        "voltage reading"
+      ],
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "C_LEAD",
+      "type": "component",
+      "layer": "physical",
+      "knowledge": "theory",
+      "label": "Cables and fixture",
+      "description": "Generic synthetic workflow element; no product internals.",
+      "aliases": [
+        "lead",
+        "connector",
+        "fixture"
+      ],
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "C_CONFIG",
+      "type": "configuration",
+      "layer": "physical",
+      "knowledge": "theory",
+      "label": "Instrument configuration",
+      "description": "Generic synthetic workflow element; no product internals.",
+      "aliases": [
+        "configuration"
+      ],
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "C_LOAD",
+      "type": "interface",
+      "layer": "physical",
+      "knowledge": "theory",
+      "label": "Opaque external load",
+      "description": "Generic synthetic workflow element; no product internals.",
+      "aliases": [
+        "external load"
+      ],
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "FN_VERIFY",
+      "type": "function",
+      "layer": "functional",
+      "knowledge": "theory",
+      "label": "Verify DC stimulus",
+      "description": "Compare the modeled DC reading to the synthetic 5 V expectation.",
+      "aliases": [],
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "M_VOLTAGE",
+      "type": "measurement",
+      "layer": "functional",
+      "knowledge": "theory",
+      "label": "DC voltage reading",
+      "description": "A logical reading category, not a physics simulation.",
+      "aliases": [],
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "S_ZERO",
+      "type": "symptom",
+      "layer": "causal",
+      "knowledge": "theory",
+      "label": "Near-zero DMM reading",
+      "description": "Reported near-zero voltage during the modeled 5 V step.",
+      "aliases": [
+        "near zero",
+        "near-zero",
+        "reads zero",
+        "reading is zero",
+        "0 v",
+        "0v",
+        "zero volts",
+        "almost zero",
+        "essentially zero"
+      ],
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "S_TIMEOUT",
+      "type": "symptom",
+      "layer": "causal",
+      "knowledge": "theory",
+      "label": "No fresh instrument reading",
+      "description": "The modeled instrument resource does not return a fresh response.",
+      "aliases": [
+        "timeout",
+        "timed out",
+        "no reading",
+        "missing reading",
+        "resource not found",
+        "no response"
+      ],
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "SRC_MODEL",
+      "type": "source",
+      "layer": "evidence",
+      "knowledge": "theory",
+      "label": "Original generic voltage workflow",
+      "description": "Conditional single-fault logical mechanisms; not equipment evidence.",
+      "aliases": [],
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "SRC_CHECKS",
+      "type": "source",
+      "layer": "evidence",
+      "knowledge": "theory",
+      "label": "Original diagnostic check definitions",
+      "description": "Categorical state checks distinguish modeled conditions; no hardware procedures.",
+      "aliases": [],
+      "source_ids": [
+        "SRC_CHECKS"
+      ]
+    },
+    {
+      "id": "SRC_REFERENCE",
+      "type": "source",
+      "layer": "evidence",
+      "knowledge": "theory",
+      "label": "Synthetic development reference case",
+      "description": "A development example records an output-disabled case; not independent validation.",
+      "aliases": [],
+      "source_ids": [
+        "SRC_REFERENCE"
+      ]
+    },
+    {
+      "id": "CHECK_SUPPLY",
+      "type": "check",
+      "layer": "diagnostic",
+      "knowledge": "theory",
+      "label": "Inspect supply output and setpoint",
+      "description": "Read synthetic state or record a categorical report.",
+      "aliases": [],
+      "source_ids": [
+        "SRC_CHECKS"
+      ]
+    },
+    {
+      "id": "F_SUPPLY",
+      "type": "fault",
+      "layer": "causal",
+      "knowledge": "theory",
+      "label": "Supply disabled or zero setpoint",
+      "description": "Supply output is disabled or setpoint is zero.",
+      "aliases": [],
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "COND_SUPPLY",
+      "type": "condition",
+      "layer": "causal",
+      "knowledge": "theory",
+      "label": "No modeled stimulus",
+      "description": "Supply output is disabled or setpoint is zero.",
+      "aliases": [],
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "CHECK_ROUTE",
+      "type": "check",
+      "layer": "diagnostic",
+      "knowledge": "theory",
+      "label": "Inspect selected measurement route",
+      "description": "Read synthetic state or record a categorical report.",
+      "aliases": [],
+      "source_ids": [
+        "SRC_CHECKS"
+      ]
+    },
+    {
+      "id": "F_ROUTE",
+      "type": "fault",
+      "layer": "causal",
+      "knowledge": "theory",
+      "label": "Incorrect switch route",
+      "description": "Route selects the modeled grounded spare channel.",
+      "aliases": [],
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "COND_ROUTE",
+      "type": "condition",
+      "layer": "causal",
+      "knowledge": "theory",
+      "label": "Wrong measurement point",
+      "description": "Route selects the modeled grounded spare channel.",
+      "aliases": [],
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "CHECK_LEAD",
+      "type": "check",
+      "layer": "diagnostic",
+      "knowledge": "theory",
+      "label": "Inspect the modeled lead path",
+      "description": "Read synthetic state or record a categorical report.",
+      "aliases": [],
+      "source_ids": [
+        "SRC_CHECKS"
+      ]
+    },
+    {
+      "id": "F_LEAD",
+      "type": "fault",
+      "layer": "causal",
+      "knowledge": "theory",
+      "label": "Open or misconnected lead",
+      "description": "Lead path is open and the synthetic input bias produces a zero category.",
+      "aliases": [],
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "COND_LEAD",
+      "type": "condition",
+      "layer": "causal",
+      "knowledge": "theory",
+      "label": "Invalid measurement path",
+      "description": "Lead path is open and the synthetic input bias produces a zero category.",
+      "aliases": [],
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "CHECK_DMM",
+      "type": "check",
+      "layer": "diagnostic",
+      "knowledge": "theory",
+      "label": "Inspect measurement function",
+      "description": "Read synthetic state or record a categorical report.",
+      "aliases": [],
+      "source_ids": [
+        "SRC_CHECKS"
+      ]
+    },
+    {
+      "id": "F_DMM",
+      "type": "fault",
+      "layer": "causal",
+      "knowledge": "theory",
+      "label": "Incorrect measurement configuration",
+      "description": "AC mode is selected for the ideal steady DC stimulus.",
+      "aliases": [],
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "COND_DMM",
+      "type": "condition",
+      "layer": "causal",
+      "knowledge": "theory",
+      "label": "Wrong measurement function",
+      "description": "AC mode is selected for the ideal steady DC stimulus.",
+      "aliases": [],
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "CHECK_RESOURCE",
+      "type": "check",
+      "layer": "diagnostic",
+      "knowledge": "theory",
+      "label": "Inspect resource response",
+      "description": "Read synthetic state or record a categorical report.",
+      "aliases": [],
+      "source_ids": [
+        "SRC_CHECKS"
+      ]
+    },
+    {
+      "id": "F_RESOURCE",
+      "type": "fault",
+      "layer": "causal",
+      "knowledge": "theory",
+      "label": "Instrument communication or resource mismatch",
+      "description": "Resource does not resolve; no cached reading is substituted.",
+      "aliases": [],
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "COND_RESOURCE",
+      "type": "condition",
+      "layer": "causal",
+      "knowledge": "theory",
+      "label": "No fresh response",
+      "description": "Resource does not resolve; no cached reading is substituted.",
+      "aliases": [],
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "CHECK_SEQUENCE",
+      "type": "check",
+      "layer": "diagnostic",
+      "knowledge": "theory",
+      "label": "Compare active step and expected profile",
+      "description": "Read synthetic state or record a categorical report.",
+      "aliases": [],
+      "source_ids": [
+        "SRC_CHECKS"
+      ]
+    },
+    {
+      "id": "F_SEQUENCE",
+      "type": "fault",
+      "layer": "causal",
+      "knowledge": "theory",
+      "label": "Sequence/configuration mismatch",
+      "description": "Sequence runs a zero-stimulus step while expecting the 5 V profile.",
+      "aliases": [],
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "COND_SEQUENCE",
+      "type": "condition",
+      "layer": "causal",
+      "knowledge": "theory",
+      "label": "Wrong active step",
+      "description": "Sequence runs a zero-stimulus step while expecting the 5 V profile.",
+      "aliases": [],
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "DEV_SUPPLY_REFERENCE",
+      "type": "case",
+      "layer": "scenario",
+      "knowledge": "scenario",
+      "label": "Synthetic output-disabled example",
+      "description": "Development example: near-zero reading with output_disabled observation. It illustrates R_SUPPLY and adds no ranking weight.",
+      "aliases": [],
+      "source_ids": [
+        "SRC_REFERENCE"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "E_CONNECT_C_SUPPLY_C_LOAD",
+      "source": "C_SUPPLY",
+      "target": "C_LOAD",
+      "type": "CONNECTED_TO",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_CONNECT_C_LOAD_C_SWITCH",
+      "source": "C_LOAD",
+      "target": "C_SWITCH",
+      "type": "CONNECTED_TO",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_CONNECT_C_SWITCH_C_LEAD",
+      "source": "C_SWITCH",
+      "target": "C_LEAD",
+      "type": "CONNECTED_TO",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_CONNECT_C_LEAD_C_DMM",
+      "source": "C_LEAD",
+      "target": "C_DMM",
+      "type": "CONNECTED_TO",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_CONNECT_C_CONTROLLER_C_CHASSIS",
+      "source": "C_CONTROLLER",
+      "target": "C_CHASSIS",
+      "type": "CONNECTED_TO",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_DEP_C_DMM_C_CONFIG",
+      "source": "C_DMM",
+      "target": "C_CONFIG",
+      "type": "DEPENDS_ON",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_DEP_C_DMM_C_CONTROLLER",
+      "source": "C_DMM",
+      "target": "C_CONTROLLER",
+      "type": "DEPENDS_ON",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_DEP_C_CONTROLLER_C_CHASSIS",
+      "source": "C_CONTROLLER",
+      "target": "C_CHASSIS",
+      "type": "DEPENDS_ON",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_DEP_FN_VERIFY_C_SUPPLY",
+      "source": "FN_VERIFY",
+      "target": "C_SUPPLY",
+      "type": "DEPENDS_ON",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_DEP_FN_VERIFY_C_SWITCH",
+      "source": "FN_VERIFY",
+      "target": "C_SWITCH",
+      "type": "DEPENDS_ON",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_DEP_FN_VERIFY_C_LEAD",
+      "source": "FN_VERIFY",
+      "target": "C_LEAD",
+      "type": "DEPENDS_ON",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_DEP_FN_VERIFY_C_DMM",
+      "source": "FN_VERIFY",
+      "target": "C_DMM",
+      "type": "DEPENDS_ON",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_DEP_FN_VERIFY_C_HOST",
+      "source": "FN_VERIFY",
+      "target": "C_HOST",
+      "type": "DEPENDS_ON",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_HOST_PERFORMS",
+      "source": "C_HOST",
+      "target": "FN_VERIFY",
+      "type": "PERFORMS",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_DMM_MEASURES",
+      "source": "C_DMM",
+      "target": "M_VOLTAGE",
+      "type": "MEASURES",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_AFFECTS_SUPPLY",
+      "source": "F_SUPPLY",
+      "target": "C_SUPPLY",
+      "type": "AFFECTS",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_CHECK_SUPPLY",
+      "source": "CHECK_SUPPLY",
+      "target": "F_SUPPLY",
+      "type": "CHECKS",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_CHECKS"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_CAUSE_SUPPLY_1",
+      "source": "F_SUPPLY",
+      "target": "COND_SUPPLY",
+      "type": "CAUSES",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": "Supply output is disabled or setpoint is zero.",
+      "rule_id": "R_SUPPLY"
+    },
+    {
+      "id": "E_CAUSE_SUPPLY_2",
+      "source": "COND_SUPPLY",
+      "target": "S_ZERO",
+      "type": "CAUSES",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": "Single fault, stable 5 V verification workflow; Supply output is disabled or setpoint is zero.",
+      "rule_id": "R_SUPPLY"
+    },
+    {
+      "id": "E_AFFECTS_ROUTE",
+      "source": "F_ROUTE",
+      "target": "C_SWITCH",
+      "type": "AFFECTS",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_CHECK_ROUTE",
+      "source": "CHECK_ROUTE",
+      "target": "F_ROUTE",
+      "type": "CHECKS",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_CHECKS"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_CAUSE_ROUTE_1",
+      "source": "F_ROUTE",
+      "target": "COND_ROUTE",
+      "type": "CAUSES",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": "Route selects the modeled grounded spare channel.",
+      "rule_id": "R_ROUTE"
+    },
+    {
+      "id": "E_CAUSE_ROUTE_2",
+      "source": "COND_ROUTE",
+      "target": "S_ZERO",
+      "type": "CAUSES",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": "Single fault, stable 5 V verification workflow; Route selects the modeled grounded spare channel.",
+      "rule_id": "R_ROUTE"
+    },
+    {
+      "id": "E_AFFECTS_LEAD",
+      "source": "F_LEAD",
+      "target": "C_LEAD",
+      "type": "AFFECTS",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_CHECK_LEAD",
+      "source": "CHECK_LEAD",
+      "target": "F_LEAD",
+      "type": "CHECKS",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_CHECKS"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_CAUSE_LEAD_1",
+      "source": "F_LEAD",
+      "target": "COND_LEAD",
+      "type": "CAUSES",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": "Lead path is open and the synthetic input bias produces a zero category.",
+      "rule_id": "R_LEAD"
+    },
+    {
+      "id": "E_CAUSE_LEAD_2",
+      "source": "COND_LEAD",
+      "target": "S_ZERO",
+      "type": "CAUSES",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": "Single fault, stable 5 V verification workflow; Lead path is open and the synthetic input bias produces a zero category.",
+      "rule_id": "R_LEAD"
+    },
+    {
+      "id": "E_AFFECTS_DMM",
+      "source": "F_DMM",
+      "target": "C_DMM",
+      "type": "AFFECTS",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_CHECK_DMM",
+      "source": "CHECK_DMM",
+      "target": "F_DMM",
+      "type": "CHECKS",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_CHECKS"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_CAUSE_DMM_1",
+      "source": "F_DMM",
+      "target": "COND_DMM",
+      "type": "CAUSES",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": "AC mode is selected for the ideal steady DC stimulus.",
+      "rule_id": "R_DMM"
+    },
+    {
+      "id": "E_CAUSE_DMM_2",
+      "source": "COND_DMM",
+      "target": "S_ZERO",
+      "type": "CAUSES",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": "Single fault, stable 5 V verification workflow; AC mode is selected for the ideal steady DC stimulus.",
+      "rule_id": "R_DMM"
+    },
+    {
+      "id": "E_AFFECTS_RESOURCE",
+      "source": "F_RESOURCE",
+      "target": "C_CONTROLLER",
+      "type": "AFFECTS",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_CHECK_RESOURCE",
+      "source": "CHECK_RESOURCE",
+      "target": "F_RESOURCE",
+      "type": "CHECKS",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_CHECKS"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_CAUSE_RESOURCE_1",
+      "source": "F_RESOURCE",
+      "target": "COND_RESOURCE",
+      "type": "CAUSES",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": "Resource does not resolve; no cached reading is substituted.",
+      "rule_id": "R_RESOURCE"
+    },
+    {
+      "id": "E_CAUSE_RESOURCE_2",
+      "source": "COND_RESOURCE",
+      "target": "S_TIMEOUT",
+      "type": "CAUSES",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": "Single fault, stable 5 V verification workflow; Resource does not resolve; no cached reading is substituted.",
+      "rule_id": "R_RESOURCE"
+    },
+    {
+      "id": "E_AFFECTS_SEQUENCE",
+      "source": "F_SEQUENCE",
+      "target": "C_HOST",
+      "type": "AFFECTS",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_CHECK_SEQUENCE",
+      "source": "CHECK_SEQUENCE",
+      "target": "F_SEQUENCE",
+      "type": "CHECKS",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_CHECKS"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_CAUSE_SEQUENCE_1",
+      "source": "F_SEQUENCE",
+      "target": "COND_SEQUENCE",
+      "type": "CAUSES",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": "Sequence runs a zero-stimulus step while expecting the 5 V profile.",
+      "rule_id": "R_SEQUENCE"
+    },
+    {
+      "id": "E_CAUSE_SEQUENCE_2",
+      "source": "COND_SEQUENCE",
+      "target": "S_ZERO",
+      "type": "CAUSES",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": "Single fault, stable 5 V verification workflow; Sequence runs a zero-stimulus step while expecting the 5 V profile.",
+      "rule_id": "R_SEQUENCE"
+    },
+    {
+      "id": "E_REFERENCE_SUPPLY",
+      "source": "DEV_SUPPLY_REFERENCE",
+      "target": "F_SUPPLY",
+      "type": "EXEMPLIFIES",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_REFERENCE"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_C_HOST",
+      "source": "C_HOST",
+      "target": "SRC_MODEL",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_C_CHASSIS",
+      "source": "C_CHASSIS",
+      "target": "SRC_MODEL",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_C_CONTROLLER",
+      "source": "C_CONTROLLER",
+      "target": "SRC_MODEL",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_C_SUPPLY",
+      "source": "C_SUPPLY",
+      "target": "SRC_MODEL",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_C_SWITCH",
+      "source": "C_SWITCH",
+      "target": "SRC_MODEL",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_C_DMM",
+      "source": "C_DMM",
+      "target": "SRC_MODEL",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_C_LEAD",
+      "source": "C_LEAD",
+      "target": "SRC_MODEL",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_C_CONFIG",
+      "source": "C_CONFIG",
+      "target": "SRC_MODEL",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_C_LOAD",
+      "source": "C_LOAD",
+      "target": "SRC_MODEL",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_FN_VERIFY",
+      "source": "FN_VERIFY",
+      "target": "SRC_MODEL",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_M_VOLTAGE",
+      "source": "M_VOLTAGE",
+      "target": "SRC_MODEL",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_S_ZERO",
+      "source": "S_ZERO",
+      "target": "SRC_MODEL",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_S_TIMEOUT",
+      "source": "S_TIMEOUT",
+      "target": "SRC_MODEL",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_CHECK_SUPPLY",
+      "source": "CHECK_SUPPLY",
+      "target": "SRC_CHECKS",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_CHECKS"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_F_SUPPLY",
+      "source": "F_SUPPLY",
+      "target": "SRC_MODEL",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_COND_SUPPLY",
+      "source": "COND_SUPPLY",
+      "target": "SRC_MODEL",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_CHECK_ROUTE",
+      "source": "CHECK_ROUTE",
+      "target": "SRC_CHECKS",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_CHECKS"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_F_ROUTE",
+      "source": "F_ROUTE",
+      "target": "SRC_MODEL",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_COND_ROUTE",
+      "source": "COND_ROUTE",
+      "target": "SRC_MODEL",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_CHECK_LEAD",
+      "source": "CHECK_LEAD",
+      "target": "SRC_CHECKS",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_CHECKS"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_F_LEAD",
+      "source": "F_LEAD",
+      "target": "SRC_MODEL",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_COND_LEAD",
+      "source": "COND_LEAD",
+      "target": "SRC_MODEL",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_CHECK_DMM",
+      "source": "CHECK_DMM",
+      "target": "SRC_CHECKS",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_CHECKS"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_F_DMM",
+      "source": "F_DMM",
+      "target": "SRC_MODEL",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_COND_DMM",
+      "source": "COND_DMM",
+      "target": "SRC_MODEL",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_CHECK_RESOURCE",
+      "source": "CHECK_RESOURCE",
+      "target": "SRC_CHECKS",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_CHECKS"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_F_RESOURCE",
+      "source": "F_RESOURCE",
+      "target": "SRC_MODEL",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_COND_RESOURCE",
+      "source": "COND_RESOURCE",
+      "target": "SRC_MODEL",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_CHECK_SEQUENCE",
+      "source": "CHECK_SEQUENCE",
+      "target": "SRC_CHECKS",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_CHECKS"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_F_SEQUENCE",
+      "source": "F_SEQUENCE",
+      "target": "SRC_MODEL",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_COND_SEQUENCE",
+      "source": "COND_SEQUENCE",
+      "target": "SRC_MODEL",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ],
+      "condition": null,
+      "rule_id": null
+    },
+    {
+      "id": "E_SOURCE_DEV_SUPPLY_REFERENCE",
+      "source": "DEV_SUPPLY_REFERENCE",
+      "target": "SRC_REFERENCE",
+      "type": "SUPPORTED_BY",
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_REFERENCE"
+      ],
+      "condition": null,
+      "rule_id": null
+    }
+  ],
+  "checks": [
+    {
+      "id": "CHECK_SUPPLY",
+      "label": "Inspect supply output and setpoint",
+      "instructions": "Simulation: inspect the modeled state. Manual: record an already available observation; this is not a physical test procedure.",
+      "outcomes": {
+        "normal": "Matches nominal synthetic configuration",
+        "output_disabled": "Supply output is disabled or setpoint is zero.",
+        "unknown": "Not checked or inconclusive"
+      },
+      "source_ids": [
+        "SRC_CHECKS"
+      ]
+    },
+    {
+      "id": "CHECK_ROUTE",
+      "label": "Inspect selected measurement route",
+      "instructions": "Simulation: inspect the modeled state. Manual: record an already available observation; this is not a physical test procedure.",
+      "outcomes": {
+        "normal": "Matches nominal synthetic configuration",
+        "wrong_route": "Route selects the modeled grounded spare channel.",
+        "unknown": "Not checked or inconclusive"
+      },
+      "source_ids": [
+        "SRC_CHECKS"
+      ]
+    },
+    {
+      "id": "CHECK_LEAD",
+      "label": "Inspect the modeled lead path",
+      "instructions": "Simulation: inspect the modeled state. Manual: record an already available observation; this is not a physical test procedure.",
+      "outcomes": {
+        "normal": "Matches nominal synthetic configuration",
+        "open_path": "Lead path is open and the synthetic input bias produces a zero category.",
+        "unknown": "Not checked or inconclusive"
+      },
+      "source_ids": [
+        "SRC_CHECKS"
+      ]
+    },
+    {
+      "id": "CHECK_DMM",
+      "label": "Inspect measurement function",
+      "instructions": "Simulation: inspect the modeled state. Manual: record an already available observation; this is not a physical test procedure.",
+      "outcomes": {
+        "normal": "Matches nominal synthetic configuration",
+        "wrong_mode": "AC mode is selected for the ideal steady DC stimulus.",
+        "unknown": "Not checked or inconclusive"
+      },
+      "source_ids": [
+        "SRC_CHECKS"
+      ]
+    },
+    {
+      "id": "CHECK_RESOURCE",
+      "label": "Inspect resource response",
+      "instructions": "Simulation: inspect the modeled state. Manual: record an already available observation; this is not a physical test procedure.",
+      "outcomes": {
+        "normal": "Matches nominal synthetic configuration",
+        "unreachable": "Resource does not resolve; no cached reading is substituted.",
+        "unknown": "Not checked or inconclusive"
+      },
+      "source_ids": [
+        "SRC_CHECKS"
+      ]
+    },
+    {
+      "id": "CHECK_SEQUENCE",
+      "label": "Compare active step and expected profile",
+      "instructions": "Simulation: inspect the modeled state. Manual: record an already available observation; this is not a physical test procedure.",
+      "outcomes": {
+        "normal": "Matches nominal synthetic configuration",
+        "profile_mismatch": "Sequence runs a zero-stimulus step while expecting the 5 V profile.",
+        "unknown": "Not checked or inconclusive"
+      },
+      "source_ids": [
+        "SRC_CHECKS"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "R_SUPPLY",
+      "fault_id": "F_SUPPLY",
+      "component_id": "C_SUPPLY",
+      "symptom_ids": [
+        "S_ZERO"
+      ],
+      "conditions": [
+        "Single fault; stable 5 V verification step",
+        "Supply output is disabled or setpoint is zero."
+      ],
+      "predictions": {
+        "CHECK_SUPPLY": "output_disabled",
+        "CHECK_ROUTE": "normal",
+        "CHECK_LEAD": "normal",
+        "CHECK_DMM": "normal",
+        "CHECK_RESOURCE": "normal",
+        "CHECK_SEQUENCE": "normal"
+      },
+      "path_edge_ids": [
+        "E_CAUSE_SUPPLY_1",
+        "E_CAUSE_SUPPLY_2"
+      ],
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "R_ROUTE",
+      "fault_id": "F_ROUTE",
+      "component_id": "C_SWITCH",
+      "symptom_ids": [
+        "S_ZERO"
+      ],
+      "conditions": [
+        "Single fault; stable 5 V verification step",
+        "Route selects the modeled grounded spare channel."
+      ],
+      "predictions": {
+        "CHECK_SUPPLY": "normal",
+        "CHECK_ROUTE": "wrong_route",
+        "CHECK_LEAD": "normal",
+        "CHECK_DMM": "normal",
+        "CHECK_RESOURCE": "normal",
+        "CHECK_SEQUENCE": "normal"
+      },
+      "path_edge_ids": [
+        "E_CAUSE_ROUTE_1",
+        "E_CAUSE_ROUTE_2"
+      ],
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "R_LEAD",
+      "fault_id": "F_LEAD",
+      "component_id": "C_LEAD",
+      "symptom_ids": [
+        "S_ZERO"
+      ],
+      "conditions": [
+        "Single fault; stable 5 V verification step",
+        "Lead path is open and the synthetic input bias produces a zero category."
+      ],
+      "predictions": {
+        "CHECK_SUPPLY": "normal",
+        "CHECK_ROUTE": "normal",
+        "CHECK_LEAD": "open_path",
+        "CHECK_DMM": "normal",
+        "CHECK_RESOURCE": "normal",
+        "CHECK_SEQUENCE": "normal"
+      },
+      "path_edge_ids": [
+        "E_CAUSE_LEAD_1",
+        "E_CAUSE_LEAD_2"
+      ],
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "R_DMM",
+      "fault_id": "F_DMM",
+      "component_id": "C_DMM",
+      "symptom_ids": [
+        "S_ZERO"
+      ],
+      "conditions": [
+        "Single fault; stable 5 V verification step",
+        "AC mode is selected for the ideal steady DC stimulus."
+      ],
+      "predictions": {
+        "CHECK_SUPPLY": "normal",
+        "CHECK_ROUTE": "normal",
+        "CHECK_LEAD": "normal",
+        "CHECK_DMM": "wrong_mode",
+        "CHECK_RESOURCE": "normal",
+        "CHECK_SEQUENCE": "normal"
+      },
+      "path_edge_ids": [
+        "E_CAUSE_DMM_1",
+        "E_CAUSE_DMM_2"
+      ],
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "R_RESOURCE",
+      "fault_id": "F_RESOURCE",
+      "component_id": "C_CONTROLLER",
+      "symptom_ids": [
+        "S_TIMEOUT"
+      ],
+      "conditions": [
+        "Single fault; stable 5 V verification step",
+        "Resource does not resolve; no cached reading is substituted."
+      ],
+      "predictions": {
+        "CHECK_SUPPLY": "normal",
+        "CHECK_ROUTE": "normal",
+        "CHECK_LEAD": "normal",
+        "CHECK_DMM": "normal",
+        "CHECK_RESOURCE": "unreachable",
+        "CHECK_SEQUENCE": "normal"
+      },
+      "path_edge_ids": [
+        "E_CAUSE_RESOURCE_1",
+        "E_CAUSE_RESOURCE_2"
+      ],
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    },
+    {
+      "id": "R_SEQUENCE",
+      "fault_id": "F_SEQUENCE",
+      "component_id": "C_HOST",
+      "symptom_ids": [
+        "S_ZERO"
+      ],
+      "conditions": [
+        "Single fault; stable 5 V verification step",
+        "Sequence runs a zero-stimulus step while expecting the 5 V profile."
+      ],
+      "predictions": {
+        "CHECK_SUPPLY": "normal",
+        "CHECK_ROUTE": "normal",
+        "CHECK_LEAD": "normal",
+        "CHECK_DMM": "normal",
+        "CHECK_RESOURCE": "normal",
+        "CHECK_SEQUENCE": "profile_mismatch"
+      },
+      "path_edge_ids": [
+        "E_CAUSE_SEQUENCE_1",
+        "E_CAUSE_SEQUENCE_2"
+      ],
+      "basis": "synthetic_demo",
+      "source_ids": [
+        "SRC_MODEL"
+      ]
+    }
+  ]
+}
