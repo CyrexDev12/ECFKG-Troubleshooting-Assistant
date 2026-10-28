@@ -1,0 +1,32 @@
+{
+  "verified_at": "2026-10-28T03:43:06.875972+00:00",
+  "method": "Actual in-app browser interactions against localhost Streamlit; backend state read after interaction",
+  "passed": [
+    "Architecture, dependency and causal views render",
+    "Node selection opens typed properties",
+    "Dragging a node and Save layout persist coordinates across server restart",
+    "Fault toolbar opens complete authoring form",
+    "Synthetic aperture example and dedicated source persist as an unpublished draft",
+    "Search APERTURE_018 focuses five nodes and four relationships",
+    "Drawing source-to-target handles opens correctly prefilled relationship form",
+    "A distinct conditional parallel AFFECTS edge is created with its own ID",
+    "Edge selection opens properties and deletion preview lists only the temporary edge",
+    "Confirmed deletion removes the temporary verification edge",
+    "Zoom, fit-to-view and reset layout controls work",
+    "Validation panel shows successful validation and a previous/updated record diff",
+    "Exactly one canvas remains after repeated edits and rerenders"
+  ],
+  "draft_sequence": 3,
+  "draft_valid": true,
+  "existing_cases_compared": 20,
+  "changed_case_outputs": 0,
+  "regressions": 0,
+  "temporary_edge_removed": true,
+  "live_publication_unchanged": true,
+  "automated_tests": {
+    "passed": 103,
+    "report": "pytest-editor.xml"
+  },
+  "screenshot": "graph-editor-review.png",
+  "scope": "Local synthetic workflow only. Publication, agent retrieval and rollback were exercised in isolated automated stores. No live API inference or equipment control."
+}

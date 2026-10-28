@@ -1,6 +1,8 @@
 # ECFKG schema and contribution guide
 
-The authoritative data is editable JSON under `data/runtime/`. Schema definitions are in
+The initial seed is JSON under `data/runtime/`. After the first editor opening, the authoritative
+published snapshot is selected by `data/workspace/current.json`; use the draft/validate/publish
+editor rather than editing that snapshot. Schema definitions are in
 `ecfkg/schema.py`; referential/semantic checks are in `KnowledgeGraph._validate()`.
 Stable uppercase IDs survive display-name changes. JSON objects reject extra fields.
 
@@ -21,6 +23,8 @@ separate nodes for each are not needed in this first workflow.
 | Edge type | Meaning | Diagnostic use |
 |---|---|---|
 | CONNECTED_TO | Physical topology only | Never converted to a cause |
+| HAS_COMPONENT | Explicit directed containment; one parent, no cycles | Architecture grouping only |
+| CONTROLS / PRODUCES / CONSUMES / FLOWS_TO | Logical control, functional production/consumption and directed flow | Dependency exploration only |
 | DEPENDS_ON | Functional reliance in the original model | Bounded dependency exploration |
 | PERFORMS / MEASURES | Functional role | Context only |
 | AFFECTS | Fault's associated component | Context only |
@@ -59,6 +63,13 @@ With one cause it prefers an unobserved abnormal confirmation check. Scores are 
 probabilities nor calibrated confidence. No proposed maintenance action is automated.
 
 ## Add knowledge without changing application code
+
+Use **Knowledge graph editor** and the typed forms described in `editor-guide.md`. Nodes
+now also support configuration/functional `properties` and `status`; relationships support
+`description` and `status`. Defaults preserve existing seed records. Check/source nodes retain
+their paired metadata records. IDs survive label edits. Multiple relationships between the
+same endpoints are allowed when types, conditions or rule membership differ; exact duplicate
+meaning is rejected. The manual process below describes the original seed authoring workflow.
 
 1. Screen a proposed public reference and record it in `data/review/`; obtain authorized
    project-use/license review before promotion. Record only minimal permitted paraphrases.

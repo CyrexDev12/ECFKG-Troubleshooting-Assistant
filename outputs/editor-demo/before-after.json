@@ -1,0 +1,1808 @@
+{
+  "notice": "Actual isolated deterministic-agent run. No live LLM call, actual equipment or independent validation.",
+  "symptom": "The DMM displays the synthetic amber aperture flag 018.",
+  "before": {
+    "timestamp": "2026-10-28T03:35:49.268639+00:00",
+    "mode": "baseline",
+    "symptom": "The DMM displays the synthetic amber aperture flag 018.",
+    "observations": [],
+    "interpretation": {
+      "symptom_ids": [],
+      "component_ids": [
+        "C_DMM"
+      ],
+      "supported": false
+    },
+    "assessment": {
+      "status": "abstain",
+      "reason": "No supported station symptom. Describe the voltage reading or communication error.",
+      "candidates": [],
+      "next_check": null,
+      "eligible_count": 0,
+      "truncated": false,
+      "evidence_ids": []
+    },
+    "trace": [],
+    "model_selection": null,
+    "elapsed_ms": 0.42969989590346813,
+    "config": {
+      "graph_version": "v000000-0dc1c0364cd4",
+      "data_sha256": "6ca7b770e93956e54f0b1b28bcbfefa424a160764b514fb7d2402129bfe20496",
+      "include_scenarios": true,
+      "candidate_cap": 3,
+      "model": null,
+      "endpoint": null,
+      "model_metadata": {},
+      "mock": false,
+      "llm_inference_requests": 0,
+      "options": {},
+      "max_tool_calls": 6,
+      "turn_timeout_seconds": 120,
+      "prompt_sha256": "019200e406861a1e64e263486a6cb65f6471c6d04fcaf90b70aa6609818e1b6e"
+    }
+  },
+  "during_draft": {
+    "timestamp": "2026-10-28T03:35:49.302283+00:00",
+    "mode": "baseline",
+    "symptom": "The DMM displays the synthetic amber aperture flag 018.",
+    "observations": [],
+    "interpretation": {
+      "symptom_ids": [],
+      "component_ids": [
+        "C_DMM"
+      ],
+      "supported": false
+    },
+    "assessment": {
+      "status": "abstain",
+      "reason": "No supported station symptom. Describe the voltage reading or communication error.",
+      "candidates": [],
+      "next_check": null,
+      "eligible_count": 0,
+      "truncated": false,
+      "evidence_ids": []
+    },
+    "trace": [],
+    "model_selection": null,
+    "elapsed_ms": 0.11490005999803543,
+    "config": {
+      "graph_version": "v000000-0dc1c0364cd4",
+      "data_sha256": "6ca7b770e93956e54f0b1b28bcbfefa424a160764b514fb7d2402129bfe20496",
+      "include_scenarios": true,
+      "candidate_cap": 3,
+      "model": null,
+      "endpoint": null,
+      "model_metadata": {},
+      "mock": false,
+      "llm_inference_requests": 0,
+      "options": {},
+      "max_tool_calls": 6,
+      "turn_timeout_seconds": 120,
+      "prompt_sha256": "019200e406861a1e64e263486a6cb65f6471c6d04fcaf90b70aa6609818e1b6e"
+    }
+  },
+  "after_publish": {
+    "timestamp": "2026-10-28T03:35:49.407043+00:00",
+    "mode": "baseline",
+    "symptom": "The DMM displays the synthetic amber aperture flag 018.",
+    "observations": [],
+    "interpretation": {
+      "symptom_ids": [
+        "S_APERTURE_018"
+      ],
+      "component_ids": [
+        "C_DMM"
+      ],
+      "supported": true
+    },
+    "assessment": {
+      "status": "candidate_identified",
+      "reason": "One candidate fits the recorded evidence within the synthetic single-fault model. Human review required.",
+      "candidates": [
+        {
+          "fault_id": "F_APERTURE_018",
+          "description": "Hypothetical configuration mismatch in the generic DMM; introduced solely to test graph editing.",
+          "score": 2,
+          "supporting": [
+            "Symptom S_APERTURE_018 matches R_APERTURE_018"
+          ],
+          "contradicting": [],
+          "path_edge_ids": [
+            "E_APERTURE_018_1",
+            "E_APERTURE_018_2"
+          ],
+          "source_ids": [
+            "SRC_MODEL"
+          ],
+          "basis": "synthetic_demo",
+          "uncertainty": "Single-fault logical model only; conditions require confirmation. Scores are not probabilities.",
+          "suggested_check": "CHECK_APERTURE_018",
+          "reference_case_ids": []
+        }
+      ],
+      "next_check": "CHECK_APERTURE_018",
+      "eligible_count": 1,
+      "truncated": false,
+      "evidence_ids": [
+        "E_APERTURE_018_1",
+        "E_APERTURE_018_2",
+        "SRC_MODEL"
+      ]
+    },
+    "trace": [],
+    "model_selection": null,
+    "elapsed_ms": 0.19739987328648567,
+    "config": {
+      "graph_version": "v000001-5c273d576d5d",
+      "data_sha256": "5015debfd040905e3cb1ffc9f1b3b1682234009b0362bfb28dedec298ff2a98b",
+      "include_scenarios": true,
+      "candidate_cap": 3,
+      "model": null,
+      "endpoint": null,
+      "model_metadata": {},
+      "mock": false,
+      "llm_inference_requests": 0,
+      "options": {},
+      "max_tool_calls": 6,
+      "turn_timeout_seconds": 120,
+      "prompt_sha256": "019200e406861a1e64e263486a6cb65f6471c6d04fcaf90b70aa6609818e1b6e"
+    }
+  },
+  "after_observation": {
+    "timestamp": "2026-10-28T03:35:49.410073+00:00",
+    "mode": "baseline",
+    "symptom": "The DMM displays the synthetic amber aperture flag 018.",
+    "observations": [
+      {
+        "check_id": "CHECK_APERTURE_018",
+        "outcome": "configuration_mismatch",
+        "origin": "user"
+      }
+    ],
+    "interpretation": {
+      "symptom_ids": [
+        "S_APERTURE_018"
+      ],
+      "component_ids": [
+        "C_DMM"
+      ],
+      "supported": true
+    },
+    "assessment": {
+      "status": "candidate_identified",
+      "reason": "One candidate fits the recorded evidence within the synthetic single-fault model. Human review required.",
+      "candidates": [
+        {
+          "fault_id": "F_APERTURE_018",
+          "description": "Hypothetical configuration mismatch in the generic DMM; introduced solely to test graph editing.",
+          "score": 5,
+          "supporting": [
+            "Symptom S_APERTURE_018 matches R_APERTURE_018",
+            "CHECK_APERTURE_018=configuration_mismatch; R_APERTURE_018 predicts configuration_mismatch"
+          ],
+          "contradicting": [],
+          "path_edge_ids": [
+            "E_APERTURE_018_1",
+            "E_APERTURE_018_2"
+          ],
+          "source_ids": [
+            "SRC_MODEL"
+          ],
+          "basis": "synthetic_demo",
+          "uncertainty": "Single-fault logical model only; conditions require confirmation. Scores are not probabilities.",
+          "suggested_check": null,
+          "reference_case_ids": []
+        }
+      ],
+      "next_check": null,
+      "eligible_count": 1,
+      "truncated": false,
+      "evidence_ids": [
+        "E_APERTURE_018_1",
+        "E_APERTURE_018_2",
+        "SRC_MODEL"
+      ]
+    },
+    "trace": [],
+    "model_selection": null,
+    "elapsed_ms": 0.1379000023007393,
+    "config": {
+      "graph_version": "v000001-5c273d576d5d",
+      "data_sha256": "5015debfd040905e3cb1ffc9f1b3b1682234009b0362bfb28dedec298ff2a98b",
+      "include_scenarios": true,
+      "candidate_cap": 3,
+      "model": null,
+      "endpoint": null,
+      "model_metadata": {},
+      "mock": false,
+      "llm_inference_requests": 0,
+      "options": {},
+      "max_tool_calls": 6,
+      "turn_timeout_seconds": 120,
+      "prompt_sha256": "019200e406861a1e64e263486a6cb65f6471c6d04fcaf90b70aa6609818e1b6e"
+    }
+  },
+  "after_rollback": {
+    "timestamp": "2026-10-28T03:35:49.538322+00:00",
+    "mode": "baseline",
+    "symptom": "The DMM displays the synthetic amber aperture flag 018.",
+    "observations": [],
+    "interpretation": {
+      "symptom_ids": [],
+      "component_ids": [
+        "C_DMM"
+      ],
+      "supported": false
+    },
+    "assessment": {
+      "status": "abstain",
+      "reason": "No supported station symptom. Describe the voltage reading or communication error.",
+      "candidates": [],
+      "next_check": null,
+      "eligible_count": 0,
+      "truncated": false,
+      "evidence_ids": []
+    },
+    "trace": [],
+    "model_selection": null,
+    "elapsed_ms": 0.09269989095628262,
+    "config": {
+      "graph_version": "v000002-6ca7b770e939",
+      "data_sha256": "b839b9d918e259efab8f0a2c33f2ca617ab5a7d360d0769ef6a99666a0f81f85",
+      "include_scenarios": true,
+      "candidate_cap": 3,
+      "model": null,
+      "endpoint": null,
+      "model_metadata": {},
+      "mock": false,
+      "llm_inference_requests": 0,
+      "options": {},
+      "max_tool_calls": 6,
+      "turn_timeout_seconds": 120,
+      "prompt_sha256": "019200e406861a1e64e263486a6cb65f6471c6d04fcaf90b70aa6609818e1b6e"
+    }
+  },
+  "validation": {
+    "valid": true,
+    "errors": [],
+    "warnings": [
+      "Synthetic/assumption evidence remains labeled; publication is not engineering validation"
+    ],
+    "cases": [
+      {
+        "case_id": "EVAL_001",
+        "before": {
+          "status": "candidate_identified",
+          "faults": [
+            "F_SUPPLY"
+          ],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            },
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_SUPPLY"
+              ],
+              "scores": [
+                5
+              ],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": true
+        },
+        "after": {
+          "status": "candidate_identified",
+          "faults": [
+            "F_SUPPLY"
+          ],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            },
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_SUPPLY"
+              ],
+              "scores": [
+                5
+              ],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": true
+        },
+        "changed": false,
+        "regression": false
+      },
+      {
+        "case_id": "EVAL_002",
+        "before": {
+          "status": "candidate_identified",
+          "faults": [
+            "F_ROUTE"
+          ],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            },
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_ROUTE"
+              ],
+              "scores": [
+                5
+              ],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": true
+        },
+        "after": {
+          "status": "candidate_identified",
+          "faults": [
+            "F_ROUTE"
+          ],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            },
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_ROUTE"
+              ],
+              "scores": [
+                5
+              ],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": true
+        },
+        "changed": false,
+        "regression": false
+      },
+      {
+        "case_id": "EVAL_003",
+        "before": {
+          "status": "candidate_identified",
+          "faults": [
+            "F_LEAD"
+          ],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            },
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_LEAD"
+              ],
+              "scores": [
+                5
+              ],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": true
+        },
+        "after": {
+          "status": "candidate_identified",
+          "faults": [
+            "F_LEAD"
+          ],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            },
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_LEAD"
+              ],
+              "scores": [
+                5
+              ],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": true
+        },
+        "changed": false,
+        "regression": false
+      },
+      {
+        "case_id": "EVAL_004",
+        "before": {
+          "status": "candidate_identified",
+          "faults": [
+            "F_DMM"
+          ],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            },
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_DMM"
+              ],
+              "scores": [
+                5
+              ],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": true
+        },
+        "after": {
+          "status": "candidate_identified",
+          "faults": [
+            "F_DMM"
+          ],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            },
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_DMM"
+              ],
+              "scores": [
+                5
+              ],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": true
+        },
+        "changed": false,
+        "regression": false
+      },
+      {
+        "case_id": "EVAL_005",
+        "before": {
+          "status": "candidate_identified",
+          "faults": [
+            "F_RESOURCE"
+          ],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_RESOURCE"
+              ],
+              "scores": [
+                2
+              ],
+              "next_check": "CHECK_RESOURCE"
+            },
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_RESOURCE"
+              ],
+              "scores": [
+                5
+              ],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": true
+        },
+        "after": {
+          "status": "candidate_identified",
+          "faults": [
+            "F_RESOURCE"
+          ],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_RESOURCE"
+              ],
+              "scores": [
+                2
+              ],
+              "next_check": "CHECK_RESOURCE"
+            },
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_RESOURCE"
+              ],
+              "scores": [
+                5
+              ],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": true
+        },
+        "changed": false,
+        "regression": false
+      },
+      {
+        "case_id": "EVAL_006",
+        "before": {
+          "status": "candidate_identified",
+          "faults": [
+            "F_SEQUENCE"
+          ],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            },
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_SEQUENCE"
+              ],
+              "scores": [
+                5
+              ],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": true
+        },
+        "after": {
+          "status": "candidate_identified",
+          "faults": [
+            "F_SEQUENCE"
+          ],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            },
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_SEQUENCE"
+              ],
+              "scores": [
+                5
+              ],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": true
+        },
+        "changed": false,
+        "regression": false
+      },
+      {
+        "case_id": "EVAL_007",
+        "before": {
+          "status": "candidate_identified",
+          "faults": [
+            "F_SUPPLY"
+          ],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            },
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_SUPPLY"
+              ],
+              "scores": [
+                5
+              ],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": true
+        },
+        "after": {
+          "status": "candidate_identified",
+          "faults": [
+            "F_SUPPLY"
+          ],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            },
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_SUPPLY"
+              ],
+              "scores": [
+                5
+              ],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": true
+        },
+        "changed": false,
+        "regression": false
+      },
+      {
+        "case_id": "EVAL_008",
+        "before": {
+          "status": "candidate_identified",
+          "faults": [
+            "F_ROUTE",
+            "F_DMM",
+            "F_LEAD"
+          ],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            },
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                5,
+                5,
+                5
+              ],
+              "next_check": "CHECK_ROUTE"
+            },
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_ROUTE",
+                "F_DMM",
+                "F_LEAD"
+              ],
+              "scores": [
+                8,
+                1,
+                1
+              ],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": true
+        },
+        "after": {
+          "status": "candidate_identified",
+          "faults": [
+            "F_ROUTE",
+            "F_DMM",
+            "F_LEAD"
+          ],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            },
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                5,
+                5,
+                5
+              ],
+              "next_check": "CHECK_ROUTE"
+            },
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_ROUTE",
+                "F_DMM",
+                "F_LEAD"
+              ],
+              "scores": [
+                8,
+                1,
+                1
+              ],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": true
+        },
+        "changed": false,
+        "regression": false
+      },
+      {
+        "case_id": "EVAL_009",
+        "before": {
+          "status": "candidate_identified",
+          "faults": [
+            "F_LEAD",
+            "F_DMM",
+            "F_ROUTE"
+          ],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            },
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                5,
+                5,
+                5
+              ],
+              "next_check": "CHECK_ROUTE"
+            },
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_LEAD",
+                "F_DMM",
+                "F_ROUTE"
+              ],
+              "scores": [
+                8,
+                1,
+                1
+              ],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": true
+        },
+        "after": {
+          "status": "candidate_identified",
+          "faults": [
+            "F_LEAD",
+            "F_DMM",
+            "F_ROUTE"
+          ],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            },
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                5,
+                5,
+                5
+              ],
+              "next_check": "CHECK_ROUTE"
+            },
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_LEAD",
+                "F_DMM",
+                "F_ROUTE"
+              ],
+              "scores": [
+                8,
+                1,
+                1
+              ],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": true
+        },
+        "changed": false,
+        "regression": false
+      },
+      {
+        "case_id": "EVAL_010",
+        "before": {
+          "status": "candidate_identified",
+          "faults": [
+            "F_DMM",
+            "F_LEAD",
+            "F_ROUTE"
+          ],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            },
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                5,
+                5,
+                5
+              ],
+              "next_check": "CHECK_ROUTE"
+            },
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                8,
+                1,
+                1
+              ],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": true
+        },
+        "after": {
+          "status": "candidate_identified",
+          "faults": [
+            "F_DMM",
+            "F_LEAD",
+            "F_ROUTE"
+          ],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            },
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                5,
+                5,
+                5
+              ],
+              "next_check": "CHECK_ROUTE"
+            },
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                8,
+                1,
+                1
+              ],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": true
+        },
+        "changed": false,
+        "regression": false
+      },
+      {
+        "case_id": "EVAL_011",
+        "before": {
+          "status": "candidate_identified",
+          "faults": [
+            "F_RESOURCE"
+          ],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_RESOURCE"
+              ],
+              "scores": [
+                2
+              ],
+              "next_check": "CHECK_RESOURCE"
+            },
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_RESOURCE"
+              ],
+              "scores": [
+                5
+              ],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": true
+        },
+        "after": {
+          "status": "candidate_identified",
+          "faults": [
+            "F_RESOURCE"
+          ],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_RESOURCE"
+              ],
+              "scores": [
+                2
+              ],
+              "next_check": "CHECK_RESOURCE"
+            },
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_RESOURCE"
+              ],
+              "scores": [
+                5
+              ],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": true
+        },
+        "changed": false,
+        "regression": false
+      },
+      {
+        "case_id": "EVAL_012",
+        "before": {
+          "status": "candidate_identified",
+          "faults": [
+            "F_SEQUENCE",
+            "F_DMM",
+            "F_LEAD"
+          ],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            },
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                5,
+                5,
+                5
+              ],
+              "next_check": "CHECK_ROUTE"
+            },
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_SEQUENCE",
+                "F_DMM",
+                "F_LEAD"
+              ],
+              "scores": [
+                8,
+                1,
+                1
+              ],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": true
+        },
+        "after": {
+          "status": "candidate_identified",
+          "faults": [
+            "F_SEQUENCE",
+            "F_DMM",
+            "F_LEAD"
+          ],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            },
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                5,
+                5,
+                5
+              ],
+              "next_check": "CHECK_ROUTE"
+            },
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_SEQUENCE",
+                "F_DMM",
+                "F_LEAD"
+              ],
+              "scores": [
+                8,
+                1,
+                1
+              ],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": true
+        },
+        "changed": false,
+        "regression": false
+      },
+      {
+        "case_id": "EVAL_013",
+        "before": {
+          "status": "needs_observations",
+          "faults": [
+            "F_DMM",
+            "F_LEAD",
+            "F_ROUTE"
+          ],
+          "expected_result_met": false,
+          "next_check": "CHECK_SUPPLY",
+          "steps": [
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            }
+          ],
+          "initial_useful_check": true
+        },
+        "after": {
+          "status": "needs_observations",
+          "faults": [
+            "F_DMM",
+            "F_LEAD",
+            "F_ROUTE"
+          ],
+          "expected_result_met": false,
+          "next_check": "CHECK_SUPPLY",
+          "steps": [
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            }
+          ],
+          "initial_useful_check": true
+        },
+        "changed": false,
+        "regression": false
+      },
+      {
+        "case_id": "EVAL_014",
+        "before": {
+          "status": "needs_observations",
+          "faults": [
+            "F_DMM",
+            "F_LEAD",
+            "F_ROUTE"
+          ],
+          "expected_result_met": false,
+          "next_check": "CHECK_SUPPLY",
+          "steps": [
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            },
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            }
+          ],
+          "initial_useful_check": true
+        },
+        "after": {
+          "status": "needs_observations",
+          "faults": [
+            "F_DMM",
+            "F_LEAD",
+            "F_ROUTE"
+          ],
+          "expected_result_met": false,
+          "next_check": "CHECK_SUPPLY",
+          "steps": [
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            },
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            }
+          ],
+          "initial_useful_check": true
+        },
+        "changed": false,
+        "regression": false
+      },
+      {
+        "case_id": "EVAL_015",
+        "before": {
+          "status": "abstain",
+          "faults": [],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "abstain",
+              "faults": [],
+              "scores": [],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": false
+        },
+        "after": {
+          "status": "abstain",
+          "faults": [],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "abstain",
+              "faults": [],
+              "scores": [],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": false
+        },
+        "changed": false,
+        "regression": false
+      },
+      {
+        "case_id": "EVAL_016",
+        "before": {
+          "status": "abstain",
+          "faults": [],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "abstain",
+              "faults": [],
+              "scores": [],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": false
+        },
+        "after": {
+          "status": "abstain",
+          "faults": [],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "abstain",
+              "faults": [],
+              "scores": [],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": false
+        },
+        "changed": false,
+        "regression": false
+      },
+      {
+        "case_id": "EVAL_017",
+        "before": {
+          "status": "abstain",
+          "faults": [],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "abstain",
+              "faults": [],
+              "scores": [],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": false
+        },
+        "after": {
+          "status": "abstain",
+          "faults": [],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "abstain",
+              "faults": [],
+              "scores": [],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": false
+        },
+        "changed": false,
+        "regression": false
+      },
+      {
+        "case_id": "EVAL_018",
+        "before": {
+          "status": "abstain",
+          "faults": [],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            },
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                5,
+                5,
+                5
+              ],
+              "next_check": "CHECK_ROUTE"
+            },
+            {
+              "status": "abstain",
+              "faults": [],
+              "scores": [],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": false
+        },
+        "after": {
+          "status": "abstain",
+          "faults": [],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            },
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                5,
+                5,
+                5
+              ],
+              "next_check": "CHECK_ROUTE"
+            },
+            {
+              "status": "abstain",
+              "faults": [],
+              "scores": [],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": false
+        },
+        "changed": false,
+        "regression": false
+      },
+      {
+        "case_id": "EVAL_019",
+        "before": {
+          "status": "abstain",
+          "faults": [],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            },
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_SUPPLY"
+              ],
+              "scores": [
+                5
+              ],
+              "next_check": null
+            },
+            {
+              "status": "abstain",
+              "faults": [],
+              "scores": [],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": false
+        },
+        "after": {
+          "status": "abstain",
+          "faults": [],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "needs_observations",
+              "faults": [
+                "F_DMM",
+                "F_LEAD",
+                "F_ROUTE"
+              ],
+              "scores": [
+                2,
+                2,
+                2
+              ],
+              "next_check": "CHECK_SUPPLY"
+            },
+            {
+              "status": "candidate_identified",
+              "faults": [
+                "F_SUPPLY"
+              ],
+              "scores": [
+                5
+              ],
+              "next_check": null
+            },
+            {
+              "status": "abstain",
+              "faults": [],
+              "scores": [],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": false
+        },
+        "changed": false,
+        "regression": false
+      },
+      {
+        "case_id": "EVAL_020",
+        "before": {
+          "status": "abstain",
+          "faults": [],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "abstain",
+              "faults": [],
+              "scores": [],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": false
+        },
+        "after": {
+          "status": "abstain",
+          "faults": [],
+          "expected_result_met": true,
+          "next_check": null,
+          "steps": [
+            {
+              "status": "abstain",
+              "faults": [],
+              "scores": [],
+              "next_check": null
+            }
+          ],
+          "initial_useful_check": false
+        },
+        "changed": false,
+        "regression": false
+      }
+    ],
+    "validated_at": "2026-10-28T03:35:49.326000+00:00",
+    "content_sha256": "5c273d576d5de96faec7ee7f498fd89949a4cd821cfa4cb1d415a7a63b41628a",
+    "base_version": "v000000-0dc1c0364cd4",
+    "seq": 1
+  },
+  "history": [
+    {
+      "version": "v000002-6ca7b770e939",
+      "parent": "v000001-5c273d576d5d",
+      "timestamp": "2026-10-28T03:35:49.486131+00:00",
+      "editor": "Luke",
+      "reviewer": "Automated demonstration",
+      "description": "Rollback demonstration"
+    },
+    {
+      "version": "v000001-5c273d576d5d",
+      "parent": "v000000-0dc1c0364cd4",
+      "timestamp": "2026-10-28T03:35:49.354214+00:00",
+      "editor": "Luke",
+      "reviewer": "Automated demonstration (not independent human review)",
+      "description": "Add uniquely identifiable synthetic aperture fault"
+    },
+    {
+      "version": "v000000-0dc1c0364cd4",
+      "parent": null,
+      "timestamp": "2026-10-28T03:35:49.238396+00:00",
+      "editor": "Luke",
+      "reviewer": "Initial import",
+      "description": "Initial preserved prototype graph"
+    }
+  ]
+}

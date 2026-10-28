@@ -7,19 +7,37 @@ from pathlib import Path
 
 import networkx as nx
 
-from ecfkg.schema import Knowledge, Source
+from ecfkg.schema import Knowledge, Source, NODE_LAYERS, PHYSICAL, compatible
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
 class KnowledgeGraph:
     def __init__(self, data_dir: Path | None = None, include_scenarios: bool = True):
+        if data_dir is None:
+            from ecfkg.storage import published
+            revision = published()
+            if revision:
+                self._load(revision["knowledge"], revision["sources"], include_scenarios)
+                return
         data_dir = data_dir or ROOT / "data" / "runtime"
         graph_bytes = (data_dir / "graph.json").read_bytes()
         source_bytes = (data_dir / "sources.json").read_bytes()
         self.data_hash = hashlib.sha256(graph_bytes + source_bytes).hexdigest()
-        self.knowledge = Knowledge.model_validate_json(graph_bytes)
-        sources = [Source.model_validate(s) for s in json.loads(source_bytes)]
+        self._load(json.loads(graph_bytes), json.loads(source_bytes), include_scenarios)
+        self.data_hash = hashlib.sha256(graph_bytes + source_bytes).hexdigest()
+
+    @classmethod
+    def from_data(cls, knowledge: dict, sources: list[dict], include_scenarios=True):
+        graph = cls.__new__(cls)
+        graph._load(knowledge, sources, include_scenarios)
+        return graph
+
+    def _load(self, knowledge, source_data, include_scenarios):
+        from ecfkg.storage import digest
+        self.data_hash = digest({"knowledge": knowledge, "sources": source_data})
+        self.knowledge = Knowledge.model_validate(knowledge)
+        sources = [Source.model_validate(s) for s in source_data]
         self.sources = self._unique(sources)
         self.nodes = self._unique(self.knowledge.nodes)
         self.edges = self._unique(self.knowledge.edges)
@@ -44,13 +62,18 @@ class KnowledgeGraph:
         return result
 
     def _validate(self):
-        layers = {"component": "physical", "interface": "physical", "software": "physical",
-                  "configuration": "physical", "function": "functional", "measurement": "functional",
-                  "condition": "causal", "fault": "causal", "symptom": "causal", "check": "diagnostic",
-                  "case": "scenario", "source": "evidence"}
         for node in self.nodes.values():
-            if node.layer != layers[node.type] or (node.type == "case") != (node.knowledge == "scenario"):
+            if node.layer != NODE_LAYERS[node.type] or (node.type == "case") != (node.knowledge == "scenario"):
                 raise ValueError("Node layer or theory/scenario mismatch")
+            if not node.label.strip() or not node.description.strip() or node.status == "draft":
+                raise ValueError(f"Node {node.id} needs a label, description and publishable knowledge status")
+            if node.type == "check" and node.id not in self.checks:
+                raise ValueError(f"Diagnostic check definition missing: {node.id}")
+            if node.type == "source" and node.id not in self.sources:
+                raise ValueError(f"Source metadata missing: {node.id}")
+        if (self.nodes.keys() & self.edges.keys() or self.nodes.keys() & self.rules.keys()
+                or self.edges.keys() & self.rules.keys()):
+            raise ValueError("Node, relationship and rule IDs must be globally distinct")
         for source in self.sources.values():
             if source.review_status == "pending":
                 raise ValueError("Pending source cannot enter runtime graph")
@@ -64,8 +87,12 @@ class KnowledgeGraph:
         for edge in self.edges.values():
             if edge.source not in self.nodes or edge.target not in self.nodes:
                 raise ValueError(f"Missing edge endpoint: {edge.id}")
+            if edge.source == edge.target or not compatible(edge.type, self.nodes[edge.source].type, self.nodes[edge.target].type):
+                raise ValueError(f"Incompatible relationship types/direction: {edge.id}")
+            if edge.status == "draft":
+                raise ValueError(f"Relationship {edge.id} is still draft knowledge")
             if edge.type == "CAUSES" and (
-                not edge.condition or edge.rule_id not in self.rules
+                not edge.condition or not edge.condition.strip() or edge.rule_id not in self.rules
             ):
                 raise ValueError("Causal edge requires condition and rule")
             if edge.type == "CAUSES" and edge.id not in self.rules[edge.rule_id].path_edge_ids:
@@ -80,6 +107,8 @@ class KnowledgeGraph:
             ):
                 raise ValueError("Only designated reference cases may exemplify faults")
         for check in self.checks.values():
+            if not check.instructions.strip() or not check.label.strip() or any(not k.strip() or not v.strip() for k, v in check.outcomes.items()):
+                raise ValueError("Diagnostic check needs instructions and named outcomes")
             if check.id not in self.nodes or self.nodes[check.id].type != "check":
                 raise ValueError("Check node missing")
             if len(check.outcomes) < 2 or "unknown" not in check.outcomes:
@@ -87,8 +116,10 @@ class KnowledgeGraph:
         for rule in self.rules.values():
             if rule.fault_id not in self.nodes or self.nodes[rule.fault_id].type != "fault":
                 raise ValueError("Rule fault missing")
-            if rule.component_id not in self.nodes:
+            if rule.component_id not in self.nodes or self.nodes[rule.component_id].type not in PHYSICAL:
                 raise ValueError("Rule component missing")
+            if not all(c.strip() for c in rule.conditions) or len(rule.path_edge_ids) > 4:
+                raise ValueError("Rule needs explicit conditions and at most four causal edges")
             if any(s not in self.nodes or self.nodes[s].type != "symptom" for s in rule.symptom_ids):
                 raise ValueError("Rule symptom missing")
             for check_id, outcome in rule.predictions.items():
@@ -104,6 +135,17 @@ class KnowledgeGraph:
                 previous = edge.target
             if previous not in rule.symptom_ids:
                 raise ValueError("Causal path does not terminate at a rule symptom")
+        if len({r.fault_id for r in self.rules.values()}) != len(self.rules):
+            raise ValueError("This scorer supports one diagnostic rule per fault; use distinct fault modes")
+        for kind in ["CAUSES", "HAS_COMPONENT"]:
+            structure = nx.DiGraph((e.source, e.target) for e in self.edges.values() if e.type == kind)
+            if not nx.is_directed_acyclic_graph(structure):
+                raise ValueError(f"{kind} relationships must not contain a directed cycle")
+            if kind == "HAS_COMPONENT" and any(d > 1 for _, d in structure.in_degree()):
+                raise ValueError("A component can have only one containment parent")
+        signatures = [(e.source, e.target, e.type, e.condition, e.rule_id) for e in self.edges.values()]
+        if len(signatures) != len(set(signatures)):
+            raise ValueError("Duplicate relationship meaning; parallel types/conditions are allowed")
 
     def find_relevant_entities(self, query: str):
         q = query.casefold()
@@ -150,7 +192,7 @@ class KnowledgeGraph:
             if len(path) >= min(max_depth, 4):
                 continue
             for _, target, edge in self.graph.out_edges(node, data=True):
-                if edge["type"] not in {"DEPENDS_ON", "PERFORMS", "MEASURES"} or target in visited:
+                if edge["type"] not in {"DEPENDS_ON", "PERFORMS", "MEASURES", "CONTROLS", "PRODUCES", "CONSUMES", "FLOWS_TO"} or target in visited:
                     continue
                 new_path = path + [edge["id"]]
                 paths.append(new_path)

@@ -1,0 +1,267 @@
+{
+  "schema_version": "1",
+  "notice": "Generic/synthetic research session; human review required.",
+  "turns": [
+    {
+      "timestamp": "2026-10-28T03:35:49.268639+00:00",
+      "mode": "baseline",
+      "symptom": "The DMM displays the synthetic amber aperture flag 018.",
+      "observations": [],
+      "interpretation": {
+        "symptom_ids": [],
+        "component_ids": [
+          "C_DMM"
+        ],
+        "supported": false
+      },
+      "assessment": {
+        "status": "abstain",
+        "reason": "No supported station symptom. Describe the voltage reading or communication error.",
+        "candidates": [],
+        "next_check": null,
+        "eligible_count": 0,
+        "truncated": false,
+        "evidence_ids": []
+      },
+      "trace": [],
+      "model_selection": null,
+      "elapsed_ms": 0.42969989590346813,
+      "config": {
+        "graph_version": "v000000-0dc1c0364cd4",
+        "data_sha256": "6ca7b770e93956e54f0b1b28bcbfefa424a160764b514fb7d2402129bfe20496",
+        "include_scenarios": true,
+        "candidate_cap": 3,
+        "model": null,
+        "endpoint": null,
+        "model_metadata": {},
+        "mock": false,
+        "llm_inference_requests": 0,
+        "options": {},
+        "max_tool_calls": 6,
+        "turn_timeout_seconds": 120,
+        "prompt_sha256": "019200e406861a1e64e263486a6cb65f6471c6d04fcaf90b70aa6609818e1b6e"
+      }
+    },
+    {
+      "timestamp": "2026-10-28T03:35:49.302283+00:00",
+      "mode": "baseline",
+      "symptom": "The DMM displays the synthetic amber aperture flag 018.",
+      "observations": [],
+      "interpretation": {
+        "symptom_ids": [],
+        "component_ids": [
+          "C_DMM"
+        ],
+        "supported": false
+      },
+      "assessment": {
+        "status": "abstain",
+        "reason": "No supported station symptom. Describe the voltage reading or communication error.",
+        "candidates": [],
+        "next_check": null,
+        "eligible_count": 0,
+        "truncated": false,
+        "evidence_ids": []
+      },
+      "trace": [],
+      "model_selection": null,
+      "elapsed_ms": 0.11490005999803543,
+      "config": {
+        "graph_version": "v000000-0dc1c0364cd4",
+        "data_sha256": "6ca7b770e93956e54f0b1b28bcbfefa424a160764b514fb7d2402129bfe20496",
+        "include_scenarios": true,
+        "candidate_cap": 3,
+        "model": null,
+        "endpoint": null,
+        "model_metadata": {},
+        "mock": false,
+        "llm_inference_requests": 0,
+        "options": {},
+        "max_tool_calls": 6,
+        "turn_timeout_seconds": 120,
+        "prompt_sha256": "019200e406861a1e64e263486a6cb65f6471c6d04fcaf90b70aa6609818e1b6e"
+      }
+    },
+    {
+      "timestamp": "2026-10-28T03:35:49.407043+00:00",
+      "mode": "baseline",
+      "symptom": "The DMM displays the synthetic amber aperture flag 018.",
+      "observations": [],
+      "interpretation": {
+        "symptom_ids": [
+          "S_APERTURE_018"
+        ],
+        "component_ids": [
+          "C_DMM"
+        ],
+        "supported": true
+      },
+      "assessment": {
+        "status": "candidate_identified",
+        "reason": "One candidate fits the recorded evidence within the synthetic single-fault model. Human review required.",
+        "candidates": [
+          {
+            "fault_id": "F_APERTURE_018",
+            "description": "Hypothetical configuration mismatch in the generic DMM; introduced solely to test graph editing.",
+            "score": 2,
+            "supporting": [
+              "Symptom S_APERTURE_018 matches R_APERTURE_018"
+            ],
+            "contradicting": [],
+            "path_edge_ids": [
+              "E_APERTURE_018_1",
+              "E_APERTURE_018_2"
+            ],
+            "source_ids": [
+              "SRC_MODEL"
+            ],
+            "basis": "synthetic_demo",
+            "uncertainty": "Single-fault logical model only; conditions require confirmation. Scores are not probabilities.",
+            "suggested_check": "CHECK_APERTURE_018",
+            "reference_case_ids": []
+          }
+        ],
+        "next_check": "CHECK_APERTURE_018",
+        "eligible_count": 1,
+        "truncated": false,
+        "evidence_ids": [
+          "E_APERTURE_018_1",
+          "E_APERTURE_018_2",
+          "SRC_MODEL"
+        ]
+      },
+      "trace": [],
+      "model_selection": null,
+      "elapsed_ms": 0.19739987328648567,
+      "config": {
+        "graph_version": "v000001-5c273d576d5d",
+        "data_sha256": "5015debfd040905e3cb1ffc9f1b3b1682234009b0362bfb28dedec298ff2a98b",
+        "include_scenarios": true,
+        "candidate_cap": 3,
+        "model": null,
+        "endpoint": null,
+        "model_metadata": {},
+        "mock": false,
+        "llm_inference_requests": 0,
+        "options": {},
+        "max_tool_calls": 6,
+        "turn_timeout_seconds": 120,
+        "prompt_sha256": "019200e406861a1e64e263486a6cb65f6471c6d04fcaf90b70aa6609818e1b6e"
+      }
+    },
+    {
+      "timestamp": "2026-10-28T03:35:49.410073+00:00",
+      "mode": "baseline",
+      "symptom": "The DMM displays the synthetic amber aperture flag 018.",
+      "observations": [
+        {
+          "check_id": "CHECK_APERTURE_018",
+          "outcome": "configuration_mismatch",
+          "origin": "user"
+        }
+      ],
+      "interpretation": {
+        "symptom_ids": [
+          "S_APERTURE_018"
+        ],
+        "component_ids": [
+          "C_DMM"
+        ],
+        "supported": true
+      },
+      "assessment": {
+        "status": "candidate_identified",
+        "reason": "One candidate fits the recorded evidence within the synthetic single-fault model. Human review required.",
+        "candidates": [
+          {
+            "fault_id": "F_APERTURE_018",
+            "description": "Hypothetical configuration mismatch in the generic DMM; introduced solely to test graph editing.",
+            "score": 5,
+            "supporting": [
+              "Symptom S_APERTURE_018 matches R_APERTURE_018",
+              "CHECK_APERTURE_018=configuration_mismatch; R_APERTURE_018 predicts configuration_mismatch"
+            ],
+            "contradicting": [],
+            "path_edge_ids": [
+              "E_APERTURE_018_1",
+              "E_APERTURE_018_2"
+            ],
+            "source_ids": [
+              "SRC_MODEL"
+            ],
+            "basis": "synthetic_demo",
+            "uncertainty": "Single-fault logical model only; conditions require confirmation. Scores are not probabilities.",
+            "suggested_check": null,
+            "reference_case_ids": []
+          }
+        ],
+        "next_check": null,
+        "eligible_count": 1,
+        "truncated": false,
+        "evidence_ids": [
+          "E_APERTURE_018_1",
+          "E_APERTURE_018_2",
+          "SRC_MODEL"
+        ]
+      },
+      "trace": [],
+      "model_selection": null,
+      "elapsed_ms": 0.1379000023007393,
+      "config": {
+        "graph_version": "v000001-5c273d576d5d",
+        "data_sha256": "5015debfd040905e3cb1ffc9f1b3b1682234009b0362bfb28dedec298ff2a98b",
+        "include_scenarios": true,
+        "candidate_cap": 3,
+        "model": null,
+        "endpoint": null,
+        "model_metadata": {},
+        "mock": false,
+        "llm_inference_requests": 0,
+        "options": {},
+        "max_tool_calls": 6,
+        "turn_timeout_seconds": 120,
+        "prompt_sha256": "019200e406861a1e64e263486a6cb65f6471c6d04fcaf90b70aa6609818e1b6e"
+      }
+    },
+    {
+      "timestamp": "2026-10-28T03:35:49.538322+00:00",
+      "mode": "baseline",
+      "symptom": "The DMM displays the synthetic amber aperture flag 018.",
+      "observations": [],
+      "interpretation": {
+        "symptom_ids": [],
+        "component_ids": [
+          "C_DMM"
+        ],
+        "supported": false
+      },
+      "assessment": {
+        "status": "abstain",
+        "reason": "No supported station symptom. Describe the voltage reading or communication error.",
+        "candidates": [],
+        "next_check": null,
+        "eligible_count": 0,
+        "truncated": false,
+        "evidence_ids": []
+      },
+      "trace": [],
+      "model_selection": null,
+      "elapsed_ms": 0.09269989095628262,
+      "config": {
+        "graph_version": "v000002-6ca7b770e939",
+        "data_sha256": "b839b9d918e259efab8f0a2c33f2ca617ab5a7d360d0769ef6a99666a0f81f85",
+        "include_scenarios": true,
+        "candidate_cap": 3,
+        "model": null,
+        "endpoint": null,
+        "model_metadata": {},
+        "mock": false,
+        "llm_inference_requests": 0,
+        "options": {},
+        "max_tool_calls": 6,
+        "turn_timeout_seconds": 120,
+        "prompt_sha256": "019200e406861a1e64e263486a6cb65f6471c6d04fcaf90b70aa6609818e1b6e"
+      }
+    }
+  ]
+}

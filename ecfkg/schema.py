@@ -9,6 +9,31 @@ from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 ID = Annotated[str, Field(pattern=r"^[A-Z][A-Z0-9_]{1,79}$")]
 Basis = Literal["synthetic_demo", "engineering_assumption", "verified_public"]
+KnowledgeStatus = Literal["draft", "synthetic", "reviewed"]
+NODE_LAYERS = {"component": "physical", "interface": "physical", "software": "physical",
+               "configuration": "physical", "function": "functional", "measurement": "functional",
+               "condition": "causal", "fault": "causal", "symptom": "causal", "check": "diagnostic",
+               "case": "scenario", "source": "evidence"}
+PHYSICAL = {"component", "interface", "software", "configuration"}
+FUNCTIONAL = PHYSICAL | {"function", "measurement"}
+EDGE_TYPES = ["CONNECTED_TO", "HAS_COMPONENT", "CONTROLS", "DEPENDS_ON", "PERFORMS", "MEASURES",
+              "PRODUCES", "CONSUMES", "FLOWS_TO", "AFFECTS", "CAUSES", "CHECKS", "EXEMPLIFIES", "SUPPORTED_BY"]
+
+
+def compatible(edge_type: str, source_type: str, target_type: str) -> bool:
+    pairs = {
+        "CONNECTED_TO": (PHYSICAL, PHYSICAL), "HAS_COMPONENT": (PHYSICAL, PHYSICAL),
+        "CONTROLS": (PHYSICAL, FUNCTIONAL), "DEPENDS_ON": (FUNCTIONAL, FUNCTIONAL),
+        "PERFORMS": (PHYSICAL, {"function"}), "MEASURES": (PHYSICAL, {"measurement"}),
+        "PRODUCES": (FUNCTIONAL, {"measurement", "function"}),
+        "CONSUMES": (FUNCTIONAL, {"measurement", "function"}), "FLOWS_TO": (FUNCTIONAL, FUNCTIONAL),
+        "AFFECTS": ({"fault"}, PHYSICAL), "CHECKS": ({"check"}, {"fault"}),
+        "EXEMPLIFIES": ({"case"}, {"fault"}), "SUPPORTED_BY": (set(NODE_LAYERS), {"source"}),
+    }
+    if edge_type == "CAUSES":
+        return (source_type in {"fault", "condition"} and target_type in {"condition", "symptom"})
+    allowed = pairs.get(edge_type)
+    return bool(allowed and source_type in allowed[0] and target_type in allowed[1])
 
 
 class StrictModel(BaseModel):
@@ -57,6 +82,8 @@ class Node(StrictModel):
     description: str
     aliases: list[str] = Field(default_factory=list)
     source_ids: list[ID] = Field(min_length=1)
+    properties: dict[str, str] = Field(default_factory=dict)
+    status: KnowledgeStatus = "synthetic"
 
 
 class Edge(StrictModel):
@@ -64,11 +91,14 @@ class Edge(StrictModel):
     source: ID
     target: ID
     type: Literal["CONNECTED_TO", "DEPENDS_ON", "PERFORMS", "MEASURES", "AFFECTS",
-                  "CAUSES", "CHECKS", "EXEMPLIFIES", "SUPPORTED_BY"]
+                  "CAUSES", "CHECKS", "EXEMPLIFIES", "SUPPORTED_BY", "HAS_COMPONENT", "CONTROLS",
+                  "PRODUCES", "CONSUMES", "FLOWS_TO"]
     basis: Basis
     source_ids: list[ID] = Field(min_length=1)
     condition: str | None = None
     rule_id: ID | None = None
+    description: str = ""
+    status: KnowledgeStatus = "synthetic"
 
 
 class Check(StrictModel):

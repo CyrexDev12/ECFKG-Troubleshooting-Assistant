@@ -9,6 +9,9 @@ of user/model statements into the knowledge graph. The user's API-first revision
 explicit OpenAI-compatible API inference for approved generic/synthetic inputs. Show the
 provider destination and transmission boundary. Never send restricted data or store/export
 API keys. Local LLM hosting is deferred; keep the deterministic demo available.
+The user authorized an interactive engineer graph editor. Human-authored changes must stay
+in drafts until validation and explicit local review publish an immutable revision. Never let
+the LLM approve edits. Keep layout separate and preserve revision references in past sessions.
 
 Preserve theory/scenario separation and provenance on every causal/diagnostic claim.
 Public availability is not approval: pending sources stay outside runtime data.

@@ -55,3 +55,12 @@ which the interface labels. Mocked protocol tests do not establish live inferenc
 receives symptoms, observations and retrieved evidence; keys are excluded from exports.
 Local LLM hosting is deferred.
 
+## Maintaining the station graph
+
+Switch Workspace to **Knowledge graph editor** for architecture, dependency and causal views.
+Select an element for its typed properties, use the toolbar for creation or draw relationships,
+then validate and review the diff before publishing. Drafts are persistent but do not affect
+diagnostics. New assessments load the published revision; active assessments keep their old
+evidence. Engineer-authored checks use manual observations unless the simulator implements
+them. See `editor-guide.md` for the full workflow and synthetic DMM demonstration.
+

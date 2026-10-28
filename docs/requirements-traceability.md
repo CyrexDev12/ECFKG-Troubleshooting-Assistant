@@ -16,10 +16,10 @@ correspondence has been reproduced. Implementation choices remain exploratory.
 | S05 | Traceable evidence (§4) | Stable rule/edge/source IDs, conditional paths, source panel and export | Graph corruption tests; citation validity metric | Implemented; provenance validity does not prove technical truth |
 | S06 | At least 25% estimated troubleshooting-time reduction (§4) | Excel time-estimate form and CSV template | Blank fields and tested formulas | Unmeasured; genuine engineer estimates required |
 | S07 | Secure data handling and ITAR restrictions (§3, §4, §6–7) | Synthetic-only runtime, no-network baseline default, explicit API transmission notice, source gate, no telemetry setting, ignored sessions/secrets | Loading/network/export tests and documented controls | Controls implemented; compliance cannot be established by this prototype |
-| S08 | Human input/review (§3, §6) | Manual observations; explicit source review; no automatic KG promotion | Manual-entry tests; no graph mutation APIs | Implemented; operating review process to be agreed |
+| S08 | Human input/review (§3, §6) | Manual observations; engineer drafts, validation and local publication review; no automatic KG promotion | Manual-entry and graph-editor tests; agent tools remain read-only | Implemented locally; institutional review process to be agreed |
 | S09 | Excel test cases, requirements, architecture, KG design, guide and prototype (§5) | Repository documents, workbook, JSON/CSV and app | Test run, report generation and UI inspection | Delivered |
 | S10 | Source metadata, screening and permitted use (§6) | Synthetic source metadata; quarantined NI candidate | Source schema and rejection tests | Public approval pending |
-| S11 | Shared workspace access control, backup and retention (§6) | Local files and version-control-ready ignore rules; handoff process documented | Data-handling checklist | Team-managed workspace, backup and archive not provisioned |
+| S11 | Shared workspace access control, backup and retention (§6) | Atomic local snapshots, mutable-file backups and reviewed rollback; ignore rules and handoff documented | Persistence, interrupted-write and rollback tests; data-handling checklist | Local recovery implemented; team access, scheduled backup and archive not provisioned |
 | S12 | Consider listed standards and risk principles (§7) | Traceability, bounded tools, review boundaries, reproducible tests | Documents and software checks | No standard conformity or certification claimed |
 
 ## Decisions introduced by the implementation

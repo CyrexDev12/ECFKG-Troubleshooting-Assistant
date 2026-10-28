@@ -1,0 +1,10 @@
+.editor-canvas{font-family:Arial,sans-serif;border:1px solid #dedbd6;border-radius:12px;overflow:hidden;background:#faf9f6;color:#24272b}
+.canvas-toolbar{padding:12px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;background:white;border-bottom:1px solid #e3e0dc;font-size:13px}
+.toolbar-buttons{display:flex;gap:6px;flex-wrap:wrap}.toolbar-buttons button{background:white;border:1px solid #d6d2cc;border-radius:6px;padding:7px 9px;cursor:pointer;color:#303239;font-size:12px}
+.toolbar-buttons button:hover{border-color:#d85f16;color:#a6450d}.toolbar-buttons button:disabled{opacity:.4;cursor:default}
+.flow-area{height:610px;width:100%;min-width:200px}.station-node{box-sizing:border-box;width:210px;min-height:92px;background:white;border:1px solid #c8c4bd;border-left:5px solid;border-radius:8px;padding:12px;box-shadow:0 2px 5px #0000000a;text-align:left}
+.station-node.active{outline:3px solid #e59155;box-shadow:0 0 0 5px #fff2e7}.station-node strong{display:block;font-size:14px;line-height:1.3;margin:5px 0}.station-node .kind{font-size:10px;text-transform:uppercase;color:#706a63;letter-spacing:.08em}.node-id{font-size:10px;color:#8c8275}.station-node small{display:block;font-size:10px;color:#706a63}
+.react-flow__handle{width:9px;height:9px;background:#d85f16;border:2px solid white}.relation-label{position:absolute;background:#fffffff2;font-size:9px;padding:3px 5px;border:1px solid;border-radius:4px;pointer-events:all;cursor:pointer;color:#444}
+.canvas-legend{padding:10px 14px;display:flex;gap:16px;flex-wrap:wrap;font-size:11px;background:white;border-top:1px solid #e3e0dc}.canvas-hint{padding:6px 14px 12px;font-size:11px;color:#777;background:white}
+.react-flow__controls-button{background:white;color:#333}.react-flow__minimap{background:#fff;border:1px solid #ddd}.react-flow__attribution{font-size:8px}
+@media(max-width:700px){.flow-area{height:500px}.canvas-toolbar{font-size:11px}.toolbar-buttons button{font-size:10px}}

@@ -29,7 +29,9 @@ dependencies and conditional failure mechanisms use different edge types.
 
 ## Runtime data flow
 
-`KnowledgeGraph` loads only `data/runtime/graph.json` and `sources.json`, validates them,
+`KnowledgeGraph` resolves `data/workspace/current.json` to an immutable published graph/source
+snapshot when the editor workspace exists; otherwise it loads the preserved `data/runtime/`
+seed files. Explicit fixture directories remain supported. It validates the selected data,
 constructs a frozen MultiDiGraph and computes a data hash. The source loader checks local
 references and HTTPS syntax; it does not fetch URLs at runtime. Public content in
 `data/review/` cannot enter retrieval by accident.
@@ -82,9 +84,18 @@ cost of constrained model explanations. Semantic interpretation still needs huma
 
 ## Persistence and deployment
 
+The React Flow editor is a bidirectional Streamlit v2 component. It sends discrete selection,
+connection/reconnection and layout events; `GraphService` owns typed CRUD, draft persistence,
+validation, case comparison and local-review publication. Immutable revisions hold graph and
+source metadata together; an atomic hash-checked pointer selects the active version. Drafts
+never enter ordinary model retrieval. Separate layout files do not change graph meaning.
+Publication rebuilds the graph on the next load; active sessions pin their original graph.
+See `editor-guide.md` for revision history, backups, stale-edit protection and rollback.
+
 The app UI binds to 127.0.0.1; API inference leaves the machine in API-assisted mode.
 Sessions live in Streamlit memory and reset on server restart.
-Downloads are explicit; no automatic user logs, remote logging or trusted-KG writes occur.
+Downloads are explicit; there are no automatic user logs or remote logging. The agent has
+read-only graph tools; trusted graph changes require the editor's validation and local review.
 Streamlit usage telemetry is disabled. Evaluation exports contain only committed synthetic
 test inputs by default. No authentication service or shared hosting is included.
 

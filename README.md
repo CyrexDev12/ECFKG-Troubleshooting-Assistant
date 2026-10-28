@@ -31,6 +31,25 @@ dependency ranges for future development. Keep this repository checkout with its
 
 The [user guide](docs/user-guide.md) includes a switch-route walkthrough and manual entry.
 
+## Interactive knowledge graph editor
+
+Choose **Knowledge graph editor** in the sidebar. Explore architecture, dependencies and
+causal paths on the React Flow canvas; select elements to edit typed properties and sources.
+Create nodes/relationships, draw or reconnect edges, add complete fault modes, and save layouts.
+Engineering edits stay in drafts until **Validate → Review / publish**. The graph service
+checks integrity and compares existing diagnostic cases before publication. Version history
+provides diffs, exports and restore-as-draft. Local review is a prototype mechanism.
+
+Original seed files stay unchanged. Drafts, atomic published revisions and separate layouts
+live under the git-ignored `data/workspace/`; back up that directory for team use. New
+assessments load the published version. Active sessions keep their original evidence.
+See the [editor guide](docs/editor-guide.md) for authoring, storage and limitations.
+
+The actual [before/after demonstration](outputs/editor-demo/before-after.json) adds a uniquely
+named synthetic DMM aperture fault and proves draft isolation, publication and rollback.
+All 20 existing case outputs remain unchanged. Reproduce it in an isolated store with
+`.\.venv\Scripts\python.exe -m tools.demo_graph_editor`.
+
 ## Two operating modes
 
 **Baseline** uses lexical symptom matching, graph retrieval and deterministic rule scoring.

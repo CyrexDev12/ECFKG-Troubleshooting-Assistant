@@ -37,6 +37,12 @@ Downloads remain under the user's browser/OS storage controls. `.gitignore` excl
 sessions, private directories, secrets, weights and scratch files. It does not provide
 encryption, deletion guarantees, malware scanning or protection from another local user.
 
+Engineer-authored graph drafts, published revisions, audit diffs and layouts are persistently
+stored under `data/workspace/` (git-ignored). Mutable files receive local `.bak` backups, and
+published history is retained. Records include the local OS editor name and entered reviewer
+identity; do not add contact information. Export only reviewed generic/synthetic data. Local
+review is not production authentication, and these backups are not a managed backup service.
+
 The separate Codex development workflow must not be assumed local merely because the
 resulting application is local. Keep restricted information out of both workflows. No
 local server setting makes the development assistant an approved destination for such data.
@@ -55,7 +61,7 @@ and agree retention/sharing with the institution and sponsor. Preserve graph ver
 source review records, approved references, case definitions, synthetic results, prompts
 and settings. Store real user session exports separately and review them before sharing.
 Archive final approved materials in the institution's chosen location. These organizational
-steps are pending; this task did not create shared accounts, remote hosting or backups.
+steps are pending; this task did not create shared accounts, remote hosting or managed backups.
 
 ## Compliance statement
 

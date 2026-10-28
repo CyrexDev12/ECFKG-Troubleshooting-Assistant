@@ -1,5 +1,6 @@
 """Local Streamlit entry point. The UI alone owns the simulator."""
 import os
+import uuid
 
 import graphviz
 import streamlit as st
@@ -21,13 +22,25 @@ st.markdown("""
 <div class="project-label">ASU Capstone IEE-018</div>
 <div class="project-watermark" aria-hidden="true">ASU Capstone IEE-018</div>
 """, unsafe_allow_html=True)
+workspace_page = st.sidebar.selectbox("Workspace", ["Troubleshooting", "Knowledge graph editor"], key="workspace_page")
+if workspace_page == "Knowledge graph editor":
+    # Keep session-only widget values while their troubleshooting widgets are absent.
+    for key in ["mode", "api_key", "api_endpoint", "api_model", "use_cases", "api_protocol",
+                "api_format", "api_token_parameter", "station_preset", "symptom_input"]:
+        if key in st.session_state:
+            st.session_state[key] = st.session_state[key]
+    st.title("System Knowledge Graph")
+    st.caption("ASU Capstone IEE-018 · Generic/synthetic station · Local engineer workspace")
+    from ecfkg.editor_ui import render_editor
+    render_editor()
+    st.stop()
 st.title("PXI Troubleshooting Lab")
 st.warning("Research prototype — generic/synthetic test station")
 st.caption("Voltage verification • Traceable evidence • Human review required")
 
 
 def reset():
-    for key in ["turns", "observations", "active_symptom", "run_signature", "api_connection"]:
+    for key in ["turns", "observations", "active_symptom", "run_signature", "api_connection", "session_graph"]:
         st.session_state.pop(key, None)
 
 
@@ -38,7 +51,7 @@ with st.sidebar:
     if st.session_state.get("mode") not in [None, *modes]:
         st.session_state.pop("mode", None)
     mode = st.radio("Execution mode", modes, key="mode")
-    use_cases = st.checkbox("Include synthetic reference cases", value=True)
+    use_cases = st.checkbox("Include synthetic reference cases", value=True, key="use_cases")
     model, endpoint, api_key = "", "", ""
     response_format, token_parameter = "json_schema", "max_completion_tokens"
     protocol = "auto"
@@ -46,19 +59,21 @@ with st.sidebar:
         st.info("Baseline active. No LLM calls.")
     else:
         st.caption("OpenAI-compatible API. Local model hosting is deferred.")
-        endpoint = st.text_input("API base URL", value=os.environ.get("ECFKG_API_BASE_URL", DEFAULT_API_BASE))
-        model = st.text_input("API model", value=os.environ.get("ECFKG_MODEL", ""), placeholder="Model ID from your provider")
+        endpoint = st.text_input("API base URL", value=os.environ.get("ECFKG_API_BASE_URL", DEFAULT_API_BASE), key="api_endpoint")
+        model = st.text_input("API model", value=os.environ.get("ECFKG_MODEL", ""), placeholder="Model ID from your provider", key="api_model")
         api_key = st.text_input("API key", type="password", key="api_key", on_change=reset,
                                 help="Held in this session only. Leave blank to use ECFKG_API_KEY or OPENAI_API_KEY from the server environment.")
         with st.expander("Provider compatibility"):
             protocols = ["auto", "responses", "chat_completions"]
             protocol_default = os.environ.get("ECFKG_API_PROTOCOL", "auto")
             protocol = st.selectbox("API protocol", protocols,
+                                    key="api_protocol",
                                     index=protocols.index(protocol_default) if protocol_default in protocols else 0,
                                     help="Auto uses Responses for api.openai.com and Chat Completions for other providers. GPT-6.1 Sol requires Responses for tools.")
             formats = ["json_schema", "json_object"]
             format_default = os.environ.get("ECFKG_API_RESPONSE_FORMAT", "json_schema")
             response_format = st.selectbox("Structured output format", formats,
+                                          key="api_format",
                                           index=formats.index(format_default) if format_default in formats else 0,
                                           help="Use JSON schema when supported; JSON object mode still validates all returned fields locally.")
             resolved_protocol = resolve_protocol(endpoint, protocol)
@@ -66,6 +81,7 @@ with st.sidebar:
                 params = ["max_completion_tokens", "max_tokens"]
                 param_default = os.environ.get("ECFKG_API_TOKEN_PARAMETER", "max_completion_tokens")
                 token_parameter = st.selectbox("Token limit parameter", params,
+                                              key="api_token_parameter",
                                               index=params.index(param_default) if param_default in params else 0,
                                               help="Some compatible providers require max_tokens.")
         st.caption("API route: " + ("Responses" if resolved_protocol == "responses" else "Chat Completions"))
@@ -92,18 +108,21 @@ with st.sidebar:
     with st.expander("Operator simulation controls"):
         st.caption("These controls are outside the assistant's evidence view. Loading a state starts a new session.")
         presets = Simulator.presets()
-        preset = st.selectbox("Hidden station state", list(presets), index=1, format_func=presets.get)
+        preset = st.selectbox("Hidden station state", list(presets), index=1, format_func=presets.get, key="station_preset")
         if st.button("Load simulated station"):
             reset()
             st.session_state.simulator = Simulator(preset)
             st.session_state.symptom_input = st.session_state.simulator.symptom()
             st.rerun()
 
-graph = KnowledgeGraph(include_scenarios=use_cases)
 signature = (mode, use_cases, model, endpoint, response_format, token_parameter, protocol)
 if st.session_state.get("run_signature") not in {None, signature}:
     reset()
 st.session_state.run_signature = signature
+current_graph = KnowledgeGraph(include_scenarios=use_cases)
+graph = st.session_state.get("session_graph", current_graph)
+if graph.knowledge.version != current_graph.knowledge.version:
+    st.info("A new graph version is published. This session keeps its original evidence; Assess symptom starts with the new version.")
 st.session_state.setdefault("turns", [])
 st.session_state.setdefault("observations", [])
 st.session_state.setdefault("simulator", Simulator())
@@ -123,6 +142,9 @@ def run_turn():
 symptom = st.text_area("Reported symptom", key="symptom_input", max_chars=2000, height=100)
 st.caption("Enter approved generic observations only. Do not paste restricted documents, credentials or personal data.")
 if st.button("Assess symptom", type="primary"):
+    graph = current_graph
+    st.session_state.session_graph = graph
+    st.session_state.assessment_id = uuid.uuid4().hex
     st.session_state.observations = []
     st.session_state.turns = []
     st.session_state.active_symptom = symptom
@@ -186,12 +208,15 @@ with right:
         st.success("Suggested: " + graph.checks[assessment.next_check].label)
     check_ids = list(graph.checks)
     check_id = st.selectbox("Check", check_ids, index=check_ids.index(assessment.next_check) if assessment.next_check else 0,
-                           format_func=lambda c: graph.checks[c].label, key=f"check_{len(st.session_state.turns)}")
+                           format_func=lambda c: graph.checks[c].label, key=f"check_{st.session_state.get('assessment_id', 'initial')}_{len(st.session_state.turns)}")
     check = graph.checks[check_id]
     st.caption(check.instructions)
     outcome = st.selectbox("Observed outcome", list(check.outcomes), format_func=lambda x: f"{x}: {check.outcomes[x]}", key=f"outcome_{check_id}")
     manual = st.button("Record observation")
-    simulated = st.button("Simulate check")
+    simulator_checks = st.session_state.simulator.available_checks()
+    simulated = st.button("Simulate check", disabled=check_id not in simulator_checks)
+    if check_id not in simulator_checks:
+        st.caption("This engineer-authored check is not in the logical simulator. Record a generic observation manually.")
     if manual or simulated:
         if len(st.session_state.observations) >= 40:
             st.error("Session limit reached. Start a new session.")

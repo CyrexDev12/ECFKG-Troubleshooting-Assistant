@@ -55,3 +55,6 @@ class Simulator:
             raise ValueError("Unknown simulated check")
         return Observation(check_id=check_id, outcome=self.__state[self.__spec.check_fields[check_id]], origin="simulator")
 
+    def available_checks(self):
+        return set(self.__spec.check_fields)
+
